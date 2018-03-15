@@ -85,4 +85,4 @@
 		</div>
 		<!-- footer-bootom-area end -->
 	</footer>
-	<!-- footer end -->
+<!-- footer end -->

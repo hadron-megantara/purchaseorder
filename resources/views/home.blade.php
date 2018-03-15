@@ -2,11 +2,13 @@
 
 @section('content')
 
+<img src="/images/banner/banner-1.jpg" style="width:100%";></img>
+
 <!-- new-arrival-area start -->
 	<div class="new-arrival-area ptb-100">
 		<div class="container">
 			<div class="row">
-				<div class="section-title text-center mb-20">
+				<div class="col-md-12 section-title text-center mb-20">
 					<h2>new arrivals</h2>
 				</div>
 			</div>
