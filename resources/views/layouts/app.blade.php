@@ -20,33 +20,19 @@
     <link href="/css/jquery-ui.min.css" rel="stylesheet">
     <link href="/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="/css/highcharts.css" rel="stylesheet">
-
-    <!-- BEGIN PLUGIN CSS -->
-    <link href="/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" media="screen" />
-    <link href="/plugins/bootstrapv3/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
-    <link href="/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
-    <link href="/plugins/animate.min.css" rel="stylesheet" type="text/css" />
-    <link href="/plugins/jquery-scrollbar/jquery.scrollbar.css" rel="stylesheet" type="text/css" />
-    <!-- END PLUGIN CSS -->
-
-    @if(session('user') || session('admin'))
-        <!-- BEGIN CORE CSS FRAMEWORK -->
-        <link href="/css/webarch.css" rel="stylesheet" type="text/css" />
-        <!-- END CORE CSS FRAMEWORK -->
-    @else
-        <link href="/css/login.css" rel="stylesheet" type="text/css" />
-    @endif
-
+    <link href="/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="/css/core.css" rel="stylesheet">
+    <link href="/css/custom.css" rel="stylesheet">
+    <link href="/css/login.css" rel="stylesheet">
+    <link href="/css/magnific-popup.css" rel="stylesheet">
+    <link href="/css/nivo-slider.css" rel="stylesheet">
+    <link href="/css/pe-icon-7-stroke.css" rel="stylesheet">
+    <link href="/css/responsive.css" rel="stylesheet">
+    <link href="/css/style-customizer.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
 
     <script src="/js/jquery-1.12.4.min.js"></script>
     <script src="/js/app.js"></script>
-    <script src="/js/jquery-ui.min.js"></script>
-    <script src="/js/jquery.dataTables.min.js"></script>
-    <script src="/js/jquery.priceformat.min.js"></script>
-    {{-- <script src="/js/highcharts.js"></script> --}}
-    <script src="/js/highstock.js"></script>
-    <script src="/js/spin.min.js"></script>
 
     <!-- Scripts -->
     <script>
@@ -60,19 +46,25 @@
     @yield('content')
     @include('includes.footer')
 
-    <!-- BEGIN CORE JS FRAMEWORK-->
-    <script src="/plugins/pace/pace.min.js" type="text/javascript"></script>
-    <!-- BEGIN JS DEPENDECENCIES-->
-    <script src="/plugins/jquery-block-ui/jqueryblockui.min.js" type="text/javascript"></script>
-    <script src="/plugins/jquery-unveil/jquery.unveil.min.js" type="text/javascript"></script>
-    <script src="/plugins/jquery-scrollbar/jquery.scrollbar.min.js" type="text/javascript"></script>
-    <script src="/plugins/jquery-numberAnimate/jquery.animateNumbers.js" type="text/javascript"></script>
-    <script src="/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
-    <script src="/plugins/bootstrap-select2/select2.min.js" type="text/javascript"></script>
-
-    <!-- END CORE JS DEPENDECENCIES-->
-    <!-- BEGIN CORE TEMPLATE JS -->
-    <script src="/js/webarch.js" type="text/javascript"></script>
-    <!-- END CORE TEMPLATE JS -->
+    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/jquery.dataTables.min.js"></script>
+    <script src="/js/jquery.priceformat.min.js"></script>
+    <script src="/js/highstock.js"></script>
+    <script src="/js/spin.min.js"></script>
+    <script src="/js/ajax-mail.js"></script>
+    <script src="/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="/js/dataTables.bootstrap.min.js"></script>
+    <script src="/js/dataTables.jqueryui.min.js"></script>
+    <script src="/js/headroom.min.js"></script>
+    <script src="/js/jquery.dataTables.min.js"></script>
+    <script src="/js/jquery.meanmenu.js"></script>
+    <script src="/js/jquery.nivo.slider.pack.js"></script>
+    <script src="/js/jquery.priceformat.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/moment-with-locales.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/plugins.js"></script>
+    <script src="/js/spin.min.js"></script>
+    <script src="/js/style-customizer.js"></script>
 </body>
 </html>
