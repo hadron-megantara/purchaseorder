@@ -33,6 +33,14 @@
 
     <script src="/js/jquery-1.12.4.min.js"></script>
     <script src="/js/app.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/jquery.dataTables.min.js"></script>
+    <script src="/js/jquery.priceformat.min.js"></script>
+    <script src="/js/highstock.js"></script>
+    <script src="/js/spin.min.js"></script>
+
+    <script src="/js/vendor/modernizr-2.8.3.min.js"></script>
+
 
     <!-- Scripts -->
     <script>
@@ -46,12 +54,8 @@
     @yield('content')
     @include('includes.footer')
 
-    <script src="/js/jquery-ui.min.js"></script>
-    <script src="/js/jquery.dataTables.min.js"></script>
-    <script src="/js/jquery.priceformat.min.js"></script>
-    <script src="/js/highstock.js"></script>
-    <script src="/js/spin.min.js"></script>
     <script src="/js/ajax-mail.js"></script>
+    <script src="/js/moment.js"></script>
     <script src="/js/bootstrap-datetimepicker.min.js"></script>
     <script src="/js/dataTables.bootstrap.min.js"></script>
     <script src="/js/dataTables.jqueryui.min.js"></script>
@@ -60,11 +64,11 @@
     <script src="/js/jquery.meanmenu.js"></script>
     <script src="/js/jquery.nivo.slider.pack.js"></script>
     <script src="/js/jquery.priceformat.min.js"></script>
-    <script src="/js/main.js"></script>
     <script src="/js/moment-with-locales.js"></script>
-    <script src="/js/owl.carousel.min.js"></script>
     <script src="/js/plugins.js"></script>
     <script src="/js/spin.min.js"></script>
     <script src="/js/style-customizer.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 </html>

@@ -1,3 +1,7 @@
+@extends('layouts.app')
+
+@section('content')
+
 <!-- new-arrival-area start -->
 	<div class="new-arrival-area ptb-100">
 		<div class="container">
@@ -2156,3 +2160,5 @@
 		</div>
 	</div>
 	<!-- new-arrival-area end -->
+
+@endsection
