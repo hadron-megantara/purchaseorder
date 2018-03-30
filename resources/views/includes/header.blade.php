@@ -131,29 +131,16 @@
                         </div>
                     </div>
                     <div class="shopping-cart ml-20 display-inline">
-                        <a href="cart.html"><b>keranjang</b>(2)</a>
+                        <a href="cart.html"><b>keranjang</b>(1)</a>
                         <ul>
                             <li>
                                 <div class="cart-img">
-                                    <a href="#"><img src="/img/cart/1.jpg" alt="" /></a>
+                                    <a href="#"><img src="{{env('API_BASE_URL').'app/images/f1c65761-7ab4-485b-8d2b-1fd0e56c621f/47d1e335-9bc4-419b-9920-310828d1b54c/big_v1-539-35593-62917-8113-46-82624-2.jpg'}}" style="max-width:80px;max-height:92px" alt="" /></a>
                                 </div>
                                 <div class="cart-content">
-                                    <h3><a href="#"> 1 X Faded...</a> </h3>
-                                    <span><b>S, Orange</b></span>
-                                    <span class="cart-price">£ 16.84</span>
-                                </div>
-                                <div class="cart-del">
-                                    <i class="fa fa-times-circle"></i>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="cart-img">
-                                    <a href="#"><img src="/img/cart/1.jpg" alt="" /></a>
-                                </div>
-                                <div class="cart-content">
-                                    <h3><a href="#"> 1 X Faded...</a> </h3>
-                                    <span><b>S, Orange</b></span>
-                                    <span class="cart-price">£ 16.84</span>
+                                    <h3><a href="#"> 1 X Salma Veil</a> </h3>
+                                    <span><b>Cokelat</b></span>
+                                    <span class="cart-price">Rp 300.000</span>
                                 </div>
                                 <div class="cart-del">
                                     <i class="fa fa-times-circle"></i>
@@ -162,34 +149,20 @@
                             <li>
                                 <div class="shipping">
                                     <span class="f-left">Shipping </span>
-                                    <span class="f-right cart-price"> $7.00</span>
+                                    <span class="f-right cart-price"> Rp 15.000</span>
                                 </div>
                                 <hr class="shipping-border" />
                                 <div class="shipping">
                                     <span class="f-left"> Total </span>
-                                    <span class="f-right cart-price">$692.00</span>
+                                    <span class="f-right cart-price">Rp 315.000</span>
                                 </div>
                             </li>
                             <li class="checkout m-0"><a href="#">checkout <i class="fa fa-angle-right"></i></a></li>
                         </ul>
                     </div>
                     <div class="setting-menu display-inline">
-                        <div class="icon-nav current"></div>
-                        <ul class="content-nav toogle-content">
-                            <li class="currencies-block-top">
-                                <div class="current"><b>Currency : USD</b></div>
-                                <ul>
-                                    <li><a href="#">Dollar (USD)</a></li>
-                                    <li><a href="#">Pound (GBP)</a></li>
-                                </ul>
-                            </li>
-                            <li class="currencies-block-top">
-                                <div class="current"><b>English</b></div>
-                                <ul>
-                                    <li><a href="#">English</a></li>
-                                    <li><a href="#">اللغة العربية</a></li>
-                                </ul>
-                            </li>
+                        <span class="fa fa-user"></span> <a href="/login">Sign In</a> | <a href="/register">Register</a>
+                        {{-- <ul class="content-nav toogle-content">
                             <li class="currencies-block-top">
                                 <div class="current"><b>My Account</b></div>
                                 <ul>
@@ -199,7 +172,7 @@
                                     <li><a href="#">Log in</a></li>
                                 </ul>
                             </li>
-                        </ul>
+                        </ul> --}}
                     </div>
                 </div>
             </div>

@@ -4,10 +4,13 @@
 
 	<!-- breadcrumb start -->
 		<div class="breadcrumb-area">
-			<div class="container">
-				<ol class="breadcrumb">
-	                <li><a href="#"><i class="fa fa-home"></i></a></li>
-	                <li><a href="#"> Kerudung</a></li>
+			<div class="container" style="margin-bottom:10px">
+				<ol class="breadcrumb" style="margin-top:-20px;margin-bottom:0px;padding-bottom:10px">
+					<a href="/"><i class="fa fa-home"></i></a>
+					<span style="margin-right:5px">/</span>
+	                <a href="/">Kerudung</a>
+					<span style="margin-left:5px;margin-right:5px">/</span>
+					{{$detail->Name}}
 				</ol>
 			</div>
 		</div>
@@ -21,7 +24,7 @@
 							<!-- Tab panes -->
 							<div class="tab-content">
 								@foreach($photo as $photoData)
-								<div class="tab-pane active" id="photo-{{$photoData->Id}}">
+								<div class="tab-pane @if($photoData->Selected == 1) active @endif" id="photo-{{$photoData->Id}}">
 									<div class="pro-large-img">
 										<img src="{{env('API_BASE_URL').'app/images/'.$photoData->Photo}}" alt="" />
 										<a class="popup-link" href="{{env('API_BASE_URL').'app/images/'.$photoData->Photo}}">View larger <i class="fa fa-search-plus" aria-hidden="true"></i></a>
@@ -32,12 +35,17 @@
 							<!-- Nav tabs -->
 							<div class="details-tab">
 								@foreach($photo as $photoData2)
-								<div @if($photoData2->Selected == 1) class="active" @endif><a href="#photo-{{$photoData2->Id}}" data-toggle="tab"><img src="{{env('API_BASE_URL').'app/images/'.$photoData2->Photo}}" alt="" /></a></div>
+								<div @if($photoData2->Selected == 1) class="active" @endif style="max-height:150px"><a href="#photo-{{$photoData2->Id}}" data-toggle="tab"><img src="{{env('API_BASE_URL').'app/images/'.$photoData2->Photo}}" alt="" /></a></div>
 								@endforeach
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-12 col-sm-6 col-md-7">
+
+					<div class="col-xs-12 col-sm-1 col-md-1">
+						&nbsp;
+					</div>
+
+					<div class="col-xs-12 col-sm-5 col-md-6">
 						<div class="product-details">
 							<h2 class="pro-d-title">{{$detail->Name}}</h2>
 							<div class="price-box">
@@ -89,58 +97,11 @@
 		</div>
 		<!-- shop-area end -->
 
+		<div style="margin-bottom:100px"></div>
 
-		<!-- service-area start -->
-		<div class="service-area pt-70 pb-40 gray-bg">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-3 col-sm-6">
-						<div class="single-service mb-30">
-							<div class="service-icon">
-								<i class="pe-7s-world"></i>
-							</div>
-							<div class="service-title">
-								<h3>FREE SHIPPING</h3>
-								<p>Free shipping on all UK orders</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6">
-						<div class="single-service mb-30">
-							<div class="service-icon">
-								<i class="pe-7s-refresh"></i>
-							</div>
-							<div class="service-title">
-								<h3>FREE EXCHANGE</h3>
-								<p>30 days return on all items</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6">
-						<div class="single-service mb-30 sm-mrg">
-							<div class="service-icon">
-								<i class="pe-7s-headphones"></i>
-							</div>
-							<div class="service-title">
-								<h3>PREMIUM SUPPORT</h3>
-								<p>We support online 24 hours a day</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6">
-						<div class="single-service mb-30 xs-mrg sm-mrg">
-							<div class="service-icon">
-								<i class="pe-7s-gift"></i>
-							</div>
-							<div class="service-title">
-								<h3>BLACK FRIDAY</h3>
-								<p>Shocking discount on every friday</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- service-area end -->
+		<script type="text/javascript">
+			$(document).ready(function(){
 
+			})
+		</script>
 @endsection
