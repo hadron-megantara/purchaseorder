@@ -1,5 +1,5 @@
 <!-- header start -->
-<header class="header-pos elements1">
+<header class="header-pos elements1" style="border-bottom: 1px solid #ebebeb;">
     <div class="header-area header-middle">
         <div class="container-fluid">
             <div class="row">
@@ -12,112 +12,34 @@
                     <div class="main-menu display-inline hidden-sm hidden-xs">
                         <nav>
                             <ul>
-                                <li><a href="index.html">Home</a>
-                                    <ul class="submenu">
-                                        <li><a href="index.html">home version 1</a></li>
-                                        <li><a href="index-2.html">home version 2</a></li>
-                                        <li><a href="index-3.html">home version 3</a></li>
-                                        <li><a href="index-4.html">home version 4</a></li>
+                                <li>
+                                    <a href="/">Home</a>
+                                </li>
+                                <li><a href="">Jilbab</a>
+                                    <ul class="submenu" style="margin-top:-20px">
+                                        <li><a href="/categories/hijab" style="border-bottom: 1px solid #ebebeb;">Semua Jilbab</a></li>
+                                        <li><a href="/categories/hijab/ciput">Ciput</a></li>
+                                        <li><a href="/categories/hijab/instant">Kerudung Instan</a></li>
+                                        <li><a href="/categories/hijab/khimar">Khimar</a></li>
+                                        <li><a href="/categories/hijab/pashmina">Pashmina</a></li>
+                                        <li><a href="/categories/hijab/square">Hijab Segi Empat</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="shop.html">Kerudung</a>
-                                    <div class="mega-menu">
-                                        <ul>
-                                            <li class="mega-title"><a href="#">Tops</a></li>
-                                            <li><a href="#">Bras & Tanks</a></li>
-                                            <li><a href="#">Trousers</a></li>
-                                            <li><a href="#">Hoodies & Sweatshirts</a></li>
-                                            <li><a href="#">Tees</a></li>
-                                            <li><a href="#">Jackets</a></li>
-                                        </ul>
-                                        <ul>
-                                            <li class="mega-title"><a href="#">Bottoms</a></li>
-                                            <li><a href="#">Shorts</a></li>
-                                            <li><a href="#">Trousers</a></li>
-                                            <li><a href="#">Tees</a></li>
-                                            <li><a href="#">Tanks</a></li>
-                                            <li><a href="#">Pants</a></li>
-                                        </ul>
-                                        <ul>
-                                            <li class="mega-title"><a href="#">Tops</a></li>
-                                            <li><a href="#">trousers</a></li>
-                                            <li><a href="#">jeans</a></li>
-                                            <li><a href="#">shorts</a></li>
-                                            <li><a href="#">suits</a></li>
-                                            <li><a href="#">jackets</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li><a href="#">Baju</a>
-                                    <div class="mega-menu mega-2-col">
-                                        <ul>
-                                            <li class="mega-title"><a href="#">Shortcode-01</a></li>
-                                            <li><a href="elements-alerts.html">alerts</a></li>
-                                            <li><a href="elements-banner1.html">banner 1</a></li>
-                                            <li><a href="elements-banner2.html">banner 2</a></li>
-                                            <li><a href="elements-banner3.html">banner 3</a></li>
-                                            <li><a href="elements-brand-logo.html">brand logo</a></li>
-                                            <li><a href="elements-buttons.html">buttons</a></li>
-                                            <li><a href="elements-blog.html">blog</a></li>
-                                            <li><a href="elements-tab.html">tab</a></li>
-                                        </ul>
-                                        <ul>
-                                            <li class="mega-title"><a href="#">Shortcode-02</a></li>
-                                            <li><a href="elements-collapse.html">collapse</a></li>
-                                            <li><a href="elements-newsletter.html">newsletter</a></li>
-                                            <li><a href="elements-newsletter-2.html">newsletter 2</a></li>
-                                            <li><a href="elements-products.html">products</a></li>
-                                            <li><a href="elements-services.html">services</a></li>
-                                            <li><a href="elements-social-icon.html">social icon</a></li>
-                                            <li><a href="elements-testimonial.html">testimonial</a></li>
-                                            <li><a href="elements-carousel-tab.html">carousel with tab</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li><a href="shop.html">Gamis</a>
-                                    <div class="mega-menu">
-                                        <ul>
-                                            <li class="mega-title"><a href="#">Tops</a></li>
-                                            <li><a href="#">Bras & Tanks</a></li>
-                                            <li><a href="#">Trousers</a></li>
-                                            <li><a href="#">Hoodies & Sweatshirts</a></li>
-                                            <li><a href="#">Tees</a></li>
-                                            <li><a href="#">Jackets</a></li>
-                                        </ul>
-                                        <ul>
-                                            <li class="mega-title"><a href="#">Bottoms</a></li>
-                                            <li><a href="#">Shorts</a></li>
-                                            <li><a href="#">Trousers</a></li>
-                                            <li><a href="#">Tees</a></li>
-                                            <li><a href="#">Tanks</a></li>
-                                            <li><a href="#">Pants</a></li>
-                                        </ul>
-                                        <ul>
-                                            <li class="mega-title"><a href="#">Tops</a></li>
-                                            <li><a href="#">trousers</a></li>
-                                            <li><a href="#">jeans</a></li>
-                                            <li><a href="#">shorts</a></li>
-                                            <li><a href="#">suits</a></li>
-                                            <li><a href="#">jackets</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li><a href="#">Tas & Sepatu</a>
-                                    <ul class="submenu">
-                                        <li><a href="blog.html">blog</a></li>
-                                        <li><a href="blog-details.html">blog details</a></li>
-                                        <li><a href="blog-right-sidebar.html">blog right sidebar</a></li>
-                                        <li><a href="cart.html">cart</a></li>
-                                        <li><a href="checkout.html">checkout</a></li>
-                                        <li><a href="contact.html">contact</a></li>
-                                        <li><a href="login.html">login</a></li>
-                                        <li><a href="product-details.html">product details</a></li>
-                                        <li><a href="register.html">register</a></li>
-                                        <li><a href="shop.html">shop</a></li>
-                                        <li><a href="wishlist.html">wishlist</a></li>
+                                <li><a>Pakaian</a>
+                                    <ul class="submenu" style="margin-top:-20px">
+                                        <li class="/categories/clothing" style="border-bottom: 1px solid #ebebeb;"><a href="#">Semua Pakaian</a></li>
+                                        <li><a href="/categories/clothing/men">Pakaian Pria</a></li>
+                                        <li><a href="/categories/clothing/women">Pakaian Wanita</a></li>
+                                        <li><a href="/categories/clothing/gamis">Gamis</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#"><span class="fa fa-asterisk" style="color:red"></span>Diskon & Promo</a></li>
+                                <li><a href="">Tas & Sepatu</a>
+                                    <ul class="submenu" style="margin-top:-20px">
+                                        <li><a href="/categories/bag">Semua Tas</a></li>
+                                        <li><a href="/categories/shoe">Semua Sepatu</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="/promo"><span class="fa fa-asterisk" style="color:red"></span>Diskon & Promo</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -131,7 +53,7 @@
                         </div>
                     </div>
                     <div class="shopping-cart ml-20 display-inline">
-                        <a href="cart.html"><b>keranjang</b>(1)</a>
+                        <a href="/cart"><b>keranjang</b>(1)</a>
                         <ul>
                             <li>
                                 <div class="cart-img">

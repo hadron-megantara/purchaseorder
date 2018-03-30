@@ -17,3 +17,5 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('/products/{id}', 'ProductController@detail');
+Route::get('/cart', 'CartController@index');
+Route::get('/checkout', 'CheckoutController@index');
