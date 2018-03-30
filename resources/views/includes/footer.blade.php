@@ -8,9 +8,9 @@
 							<h3 class="footer-title">Contact info</h3>
 							<div class="footer-contact">
 								<ul>
-									<li><em class="fa fa-map-marker"></em>8901 Marmora Road, Glasgow <span>D04 89 GR, New York</span></li>
-									<li><em class="fa fa-phone"></em>Telephones: (+1) 866-540-3229 <span>Fax: (+1) 866-540-3229</span></li>
-									<li><em class="fa fa-envelope-o"></em>Email: support@posthemes.com</li>
+									<li><em class="fa fa-map-marker"></em>Main office at Mall Thamrin City, lt 3A Blok H35-01, Jakarta Pusat</li>
+									<li><em class="fa fa-phone"></em>Telephones:  (+62)21 21231056</li>
+									<li><em class="fa fa-envelope-o"></em>Email: support@kangkoding.com</li>
 								</ul>
 							</div>
 						</div>
@@ -72,12 +72,12 @@
 				<div class="row">
 					<div class="col-md-6 col-sm-6 col-xs-12">
 						<div class="copyright">
-							<p>Copyright <a href="#">HasTech</a>. All Rights Reserved</p>
+							<p>&copy;Copyright <a href="#">KangKoding</a> 2018</p>
 						</div>
 					</div>
 					<div class="col-md-6 col-sm-6 col-xs-12">
 						<div class="payment">
-							<img src="img/payment.png" alt="" />
+							<img src="/img/payment.png" alt="" />
 						</div>
 					</div>
 				</div>

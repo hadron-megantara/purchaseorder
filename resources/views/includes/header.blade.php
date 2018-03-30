@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-md-2 col-sm-3 col-xs-12">
                     <div class="logo">
-                        <a href="index.html"><img src="img/logo/logo-word-black.png" alt="" / style="width:200px;"></a>
+                        <a href="/"><img src="/img/logo/logo-word-black.png" alt="" / style="width:200px;"></a>
                     </div>
                 </div>
                 <div class="col-md-10 col-sm-9 col-xs-12 text-right xs-center">
@@ -20,7 +20,7 @@
                                         <li><a href="index-4.html">home version 4</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="shop.html">Sofa</a>
+                                <li><a href="shop.html">Kerudung</a>
                                     <div class="mega-menu">
                                         <ul>
                                             <li class="mega-title"><a href="#">Tops</a></li>
@@ -48,7 +48,7 @@
                                         </ul>
                                     </div>
                                 </li>
-                                <li><a href="#">Elements</a>
+                                <li><a href="#">Baju</a>
                                     <div class="mega-menu mega-2-col">
                                         <ul>
                                             <li class="mega-title"><a href="#">Shortcode-01</a></li>
@@ -74,7 +74,7 @@
                                         </ul>
                                     </div>
                                 </li>
-                                <li><a href="shop.html">Lighting</a>
+                                <li><a href="shop.html">Gamis</a>
                                     <div class="mega-menu">
                                         <ul>
                                             <li class="mega-title"><a href="#">Tops</a></li>
@@ -102,7 +102,7 @@
                                         </ul>
                                     </div>
                                 </li>
-                                <li><a href="#">Pages</a>
+                                <li><a href="#">Tas & Sepatu</a>
                                     <ul class="submenu">
                                         <li><a href="blog.html">blog</a></li>
                                         <li><a href="blog-details.html">blog details</a></li>
@@ -117,7 +117,7 @@
                                         <li><a href="wishlist.html">wishlist</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#">What's New</a></li>
+                                <li><a href="#"><span class="fa fa-asterisk" style="color:red"></span>Diskon & Promo</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -131,11 +131,11 @@
                         </div>
                     </div>
                     <div class="shopping-cart ml-20 display-inline">
-                        <a href="cart.html"><b>shopping cart</b>(2)</a>
+                        <a href="cart.html"><b>keranjang</b>(2)</a>
                         <ul>
                             <li>
                                 <div class="cart-img">
-                                    <a href="#"><img src="img/cart/1.jpg" alt="" /></a>
+                                    <a href="#"><img src="/img/cart/1.jpg" alt="" /></a>
                                 </div>
                                 <div class="cart-content">
                                     <h3><a href="#"> 1 X Faded...</a> </h3>
@@ -148,7 +148,7 @@
                             </li>
                             <li>
                                 <div class="cart-img">
-                                    <a href="#"><img src="img/cart/1.jpg" alt="" /></a>
+                                    <a href="#"><img src="/img/cart/1.jpg" alt="" /></a>
                                 </div>
                                 <div class="cart-content">
                                     <h3><a href="#"> 1 X Faded...</a> </h3>
