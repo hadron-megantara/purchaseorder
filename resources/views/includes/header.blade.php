@@ -1,3 +1,12 @@
+<?php
+    if(Session::has('cart')){
+        $sessionCart = Session('cart');
+        $cartCount = $sessionCart['total'];
+    } else{
+        $cartCount = 0;
+    }
+?>
+
 <!-- header start -->
 <header class="header-pos elements1" style="border-bottom: 1px solid #ebebeb;">
     <div class="header-area header-middle">
@@ -52,9 +61,9 @@
                             </form>
                         </div>
                     </div>
-                    <div class="shopping-cart ml-20 display-inline">
-                        <a href="/cart"><b>keranjang</b>(1)</a>
-                        <ul>
+                    <div class="shopping-cart ml-20 display-inline" id="cartCountDiv">
+                        <a href="/cart"><b>keranjang</b>(<span id="cartCount">@if(isset($cartCount)) {{$cartCount}} @else 0 @endif</span>)</a>
+                        {{-- <ul>
                             <li>
                                 <div class="cart-img">
                                     <a href="#"><img src="{{env('API_BASE_URL').'app/images/f1c65761-7ab4-485b-8d2b-1fd0e56c621f/47d1e335-9bc4-419b-9920-310828d1b54c/big_v1-539-35593-62917-8113-46-82624-2.jpg'}}" style="max-width:80px;max-height:92px" alt="" /></a>
@@ -69,10 +78,6 @@
                                 </div>
                             </li>
                             <li>
-                                <div class="shipping">
-                                    <span class="f-left">Shipping </span>
-                                    <span class="f-right cart-price"> Rp 15.000</span>
-                                </div>
                                 <hr class="shipping-border" />
                                 <div class="shipping">
                                     <span class="f-left"> Total </span>
@@ -80,6 +85,10 @@
                                 </div>
                             </li>
                             <li class="checkout m-0"><a href="#">checkout <i class="fa fa-angle-right"></i></a></li>
+                        </ul> --}}
+
+                        <ul style="margin-top:-50px;background:#FBB62D;height:30px;padding-top:-10px;width:200px" id="cartCountInfo">
+                            <li style="color:#ffffff;margin-top:-10px"><span class="fa fa-info-circle"></span> Keranjang Diperbaharui</li>
                         </ul>
                     </div>
                     <div class="setting-menu display-inline">
@@ -200,3 +209,11 @@
     </div>
 </header>
 <!-- header end -->
+
+<script type="text/javascript">
+	$(document).ready(function(){
+        $('#cartCountDiv').hover(function(){
+            $('#cartCountInfo').css({"opacity": "0", "visibility": "hidden"});
+        });
+    });
+</script>
