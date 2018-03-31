@@ -2,130 +2,122 @@
 
 @section('content')
 
-<img src="/images/banner/banner-1.jpg" style="width:100%";></img>
+<!-- breadcrumb start -->
+<div class="breadcrumb-area" style="margin-top:10px">
+	<div class="container">
+		<ol class="breadcrumb" style="margin-top:-20px;margin-bottom:0px;padding-bottom:10px;border:none">
+			<a href="/"><i class="fa fa-home"></i></a>
+			<span style="margin-left:5px;margin-right:5px">/</span>
+			Cart
+		</ol>
+	</div>
+</div>
+<!-- breadcrumb end -->
 
-<!-- new-arrival-area start -->
-	<div class="new-arrival-area ptb-100">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 section-title text-center mb-20">
-					<h2>terbaru</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<div class="product-tab">
-						<!-- Nav tabs -->
-						<ul class="custom-tab text-center mb-40">
-							<li class="active"><a href="#hijab" data-toggle="tab">Kerudung</a></li>
-							<li><a href="#cloth" data-toggle="tab">Baju</a></li>
-							<li><a href="#gamis" data-toggle="tab">Gamis</a></li>
-							<li><a href="#bag-shoes" data-toggle="tab">Tas & Sepatu</a></li>
-							<li><a href="#discount" data-toggle="tab"><span class="fa fa-asterisk" style="color:red"></span>Diskon&Promo</a></li>
-						</ul>
-						<!-- Tab panes -->
-						<div class="row">
-							<div class="tab-content" style="width:100%">
-								<div class="tab-pane active" id="hijab">
-									<div class="product-carousel">
-										<?php $countData = 1; ?>
-										@foreach($product->product as $productData)
-										<div class="col-md-12">
-											<div class="product-wrapper mb-40  mrg-nn-xs">
-												<div class="product-img">
-													<a href="/products/{{$productData->Id}}"><img src="{{env('API_BASE_URL').'app/images/'.$productData->Photo}}" alt="" /></a>
-													<span class="new-label">New</span>
-													<div class="product-action">
-														{{-- <a href="#"><i class="pe-7s-cart"></i></a> --}}
-														{{-- <a href="#"><i class="pe-7s-like"></i></a>
-														<a href="#"><i class="pe-7s-folder"></i></a> --}}
-														<a href="/products/{{$productData->Id}}" data-toggle="modal" data-target="#productModal"><i class="pe-7s-look"></i></a>
-													</div>
-												</div>
-												<div class="product-content">
-													<div class="pro-title">
-														<h3><a href="product-details.html">{{$productData->Name}}</a></h3>
-													</div>
-													<div class="price-reviews">
-														<div class="price-box">
-															<span class="price product-price">Rp {{number_format($productData->Price,0,",",".")}}</span>
-															{{-- <span class="old-price product-price">$262.00</span> --}}
-														</div>
-														{{-- <div class="pro-rating">
-															<a href="#"><i class="fa fa-star-o"></i></a>
-															<a href="#"><i class="fa fa-star-o"></i></a>
-															<a href="#"><i class="fa fa-star-o"></i></a>
-															<a href="#"><i class="fa fa-star-o"></i></a>
-															<a href="#"><i class="fa fa-star-o"></i></a>
-														</div> --}}
-													</div>
-												</div>
-											</div>
-										</div>
-										<?php $countData++; ?>
-										@endforeach
-									</div>
+<div class="row clear"></div>
+
+<!-- cart-main-area start -->
+<div class="cart-main-area">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<form action="#">
+					<div class="table-content table-responsive">
+						<table>
+							<thead>
+								<tr>
+									<th class="product-thumbnail">Image</th>
+									<th class="product-name">Product</th>
+									<th class="product-price">Price</th>
+									<th class="product-quantity">Quantity</th>
+									<th class="product-subtotal">Total</th>
+									<th class="product-remove">Remove</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="product-thumbnail"><a href="#"><img src="img/product/1.jpg" alt="" /></a></td>
+									<td class="product-name"><a href="#">Vestibulum suscipit</a></td>
+									<td class="product-price"><span class="amount">£165.00</span></td>
+									<td class="product-quantity"><input type="number" value="1" /></td>
+									<td class="product-subtotal">£165.00</td>
+									<td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
+								</tr>
+								<tr>
+									<td class="product-thumbnail"><a href="#"><img src="img/product/2.jpg" alt="" /></a></td>
+									<td class="product-name"><a href="#">Vestibulum dictum magna</a></td>
+									<td class="product-price"><span class="amount">£50.00</span></td>
+									<td class="product-quantity"><input type="number" value="1" /></td>
+									<td class="product-subtotal">£50.00</td>
+									<td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="row">
+						<div class="col-md-6 col-sm-7 col-xs-12">
+							<div class="buttons-cart">
+								<a href="/"><span class="fa fa-chevron-left"></span> LANJUTKAN BERBELANJA</a>
+							</div>
+							<div class="coupon">
+								<h3>Voucher</h3>
+								<p>Masukkan Kode Voucher Yang Anda Punya</p>
+								<input type="text" placeholder="Kode Voucher" />
+								<input type="submit" value="Gunakan" />
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-5 col-xs-12">
+							<div class="cart_totals">
+								<h2>Cart Totals</h2>
+								<table>
+									<tbody>
+										<tr class="cart-subtotal">
+											<th>Subtotal</th>
+											<td><span class="amount">Rp 1.500.000</span></td>
+										</tr>
+
+										<tr>
+											<th>Voucher</th>
+											<td>
+												<span id="voucherNone">Tidak Tersedia</span>
+												<span id="voucherAvailable" style="display:none">DISKONLEBARAN23</span>
+											</td>
+										</tr>
+
+										<tr>
+											<th style="width:200px">Diskon Voucher</th>
+											<td>
+												<span id="discountVoucherNone">Tidak Tersedia</span>
+												<span id="discountVoucherAvailable" style="display:none">Rp 120.000</span>
+											</td>
+										</tr>
+
+										<tr>
+											<th>Biaya Pengiriman</th>
+											<td><span>Akan ditambahkan setelah memilih metode pembayaran</span></td>
+										</tr>
+
+										<tr class="order-total">
+											<th>Total</th>
+											<td>
+												<strong><span class="amount">Rp 1.500.000</span></strong>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<div class="wc-proceed-to-checkout">
+									<a href="#">LANJUT KE PEMBAYARAN</a>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				</form>
 			</div>
 		</div>
 	</div>
-	<!-- new-arrival-area end -->
+</div>
+<!-- cart-main-area end -->
 
-	<!-- service-area start -->
-	<div class="service-area pt-70 pb-40 gray-bg" style="margin-top:-100px">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-3 col-sm-6">
-					<div class="single-service mb-30">
-						<div class="service-icon">
-							<i class="pe-7s-world"></i>
-						</div>
-						<div class="service-title">
-							<h3>FREE SHIPPING</h3>
-							<p>Free shipping on all UK orders</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6">
-					<div class="single-service mb-30">
-						<div class="service-icon">
-							<i class="pe-7s-refresh"></i>
-						</div>
-						<div class="service-title">
-							<h3>FREE EXCHANGE</h3>
-							<p>30 days return on all items</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6">
-					<div class="single-service mb-30 sm-mrg">
-						<div class="service-icon">
-							<i class="pe-7s-headphones"></i>
-						</div>
-						<div class="service-title">
-							<h3>PREMIUM SUPPORT</h3>
-							<p>We support online 24 hours a day</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6">
-					<div class="single-service mb-30 xs-mrg sm-mrg">
-						<div class="service-icon">
-							<i class="pe-7s-gift"></i>
-						</div>
-						<div class="service-title">
-							<h3>BLACK FRIDAY</h3>
-							<p>Shocking discount on every friday</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- service-area end -->
+<div class="cart-space-area" style="margin-bottom:200px"></div>
 
 @endsection

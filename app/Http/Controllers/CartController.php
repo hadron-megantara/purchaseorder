@@ -9,7 +9,17 @@ use App\Profile;
 class CartController extends Controller
 {
     public function index(Request $request){
-        return view('cart');
+        if(Session::has('cart')){
+            $cartData = Session('cart');
+        } else{
+            $cartData = null;
+        }
+
+        $data = array(
+            'cart' => $cartData
+        );
+
+        return view('cart', $data);
     }
 
     public function addToCart(Request $request){

@@ -2,6 +2,10 @@
 
 @section('content')
 
+<?php
+	$selectPhotoByColor = array();
+?>
+
 <!-- breadcrumb start -->
 <div class="breadcrumb-area" style="margin-top:10px">
 	<div class="container">
@@ -27,7 +31,7 @@
 					<!-- Tab panes -->
 					<div class="tab-content">
 						@foreach($photo as $photoData)
-						<div class="tab-pane @if($photoData->Selected == 1) active @endif" id="photo-{{$photoData->Id}}">
+						<div class="tab-pane @if($photoData->Selected == 1) active @endif" id="photo-{{$photoData->_Product}}-{{$photoData->_Color}}-{{$photoData->Id}}">
 							<div class="pro-large-img">
 								<img src="{{env('API_BASE_URL').'app/images/'.$photoData->Photo}}" alt="" />
 								<a class="popup-link" href="{{env('API_BASE_URL').'app/images/'.$photoData->Photo}}">View larger <i class="fa fa-search-plus" aria-hidden="true"></i></a>
@@ -38,7 +42,12 @@
 					<!-- Nav tabs -->
 					<div class="details-tab">
 						@foreach($photo as $photoData2)
-						<div @if($photoData2->Selected == 1) class="active" @endif style="max-height:150px"><a href="#photo-{{$photoData2->Id}}" data-toggle="tab"><img src="{{env('API_BASE_URL').'app/images/'.$photoData2->Photo}}" alt="" /></a></div>
+							<?php
+								if(!array_key_exists($photoData2->_Color,$selectPhotoByColor)){
+									$selectPhotoByColor[$photoData2->_Color] = "subPhoto-".$photoData2->_Product."-".$photoData2->_Color."-".$photoData2->Id;
+								}
+							?>
+							<div @if($photoData2->Selected == 1) class="active" @endif style="max-height:150px"><a href="#photo-{{$photoData2->_Product}}-{{$photoData2->_Color}}-{{$photoData2->Id}}" id="subPhoto-{{$photoData2->_Product}}-{{$photoData2->_Color}}-{{$photoData2->Id}}" data-toggle="tab"><img src="{{env('API_BASE_URL').'app/images/'.$photoData2->Photo}}" alt="" /></a></div>
 						@endforeach
 					</div>
 				</div>
@@ -182,6 +191,12 @@
 
 							$('#cartSize').append('<option value="{{$stockSizeKey}}">{{$stockSizeVal["name"]}}</option>');
 						@endforeach
+					}
+				@endforeach
+
+				@foreach($selectPhotoByColor as $selectPhotoByColorKey => $selectPhotoByColorVal)
+					if({{$selectPhotoByColorKey}} == $(this).val()){
+						$("#{{$selectPhotoByColorVal}}").click();
 					}
 				@endforeach
 			}
