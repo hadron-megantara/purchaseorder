@@ -60,30 +60,32 @@
 					</div>
 
 					<div class="col-md-12 row" style="margin-bottom:10px">
-						<select class="form-control">
-							<option value="">Pilih Warna</option>
-							<option value="">Cokelat</option>
+						<select class="form-control" id="cartColor">
+							@foreach($stock as $stockDataKey => $stockDataValue)
+								<option value="{{$stockDataKey}}">{{$stockDataValue['name']}}</option>
+							@endforeach
 						</select>
 					</div>
 
 					<div class="col-md-12 row" style="margin-bottom:10px">
-						<select class="form-control">
-							<option value="">Pilih Ukuran</option>
-							<option value="">XL</option>
-						</select>
+						<select class="form-control" id="cartSize"></select>
 					</div>
 
-					<div class="col-md-12 row" style="margin-bottom:10px">
-						<select class="form-control">
-							<option value="">Pilih Jumlah</option>
-							<option value="">5</option>
-						</select>
+					<div class="row">
+						<div class="col-md-3">
+							<label>Jumlah</label>
+							<input type="number" id="cartTotal" placeholder="" class="form-control" value="1" />
+						</div>
+
+						<div class="col-md-9" style="line-height:6">
+							<label>Stok Tersedia : <span style="color:#ffae00;font-weight:bold;" id="cartTotalStockSuccess"><span id="cartTotalStock"></span> pcs</span></label>
+						</div>
 					</div>
 
-					<div class="row clear"></div>
+					<div class="row clear" style="margin-bottom:10px"></div>
 
 					<div class="col-md-12 row" style="margin-top:30px">
-						<a href="" class="btn btn-success form-control" style="background-color:#4AA9BE"><span class="fa fa-shopping-cart"></span> Tambah Ke Keranjang</a>
+						<button id="addToCart" class="btn btn-success form-control" style="background-color:#4AA9BE"><span class="fa fa-shopping-cart"></span> Tambah Ke Keranjang</button>
 					</div>
 
 					<div class="col-md-12 row" style="margin-top:10px">
@@ -100,7 +102,72 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
+		var firstStock = 0;
+		@foreach($stock as $stockKey => $stockVal)
+			if({{$stockKey}} == $('#cartColor').val()){
+				@foreach($stockVal['size'] as $stockSizeKey => $stockSizeVal)
+					if(firstStock == 0){
+						firstStock = 1;
 
+						$('#cartTotalStock').html('{{$stockSizeVal["total"]}}');
+					}
+
+					$('#cartSize').append('<option value="{{$stockSizeKey}}">{{$stockSizeVal["name"]}}</option>');
+				@endforeach
+			}
+		@endforeach
+
+		$('#addToCart').click(function(){
+			$.ajax({
+		        type: "POST",
+		        url: "/cart/add",
+		        data: {
+					'id': '{{$detail->Id}}',
+					'color' : $('#cartColor').find(":selected").val(),
+					'size' : $('#cartSize').find(":selected").val(),
+					'total' : $('#cartTotal').val()
+				},
+		        success: function(data) {
+					console.log(data);
+		        }
+		    });
+		});
+
+		$('#cartColor').change(function(){
+			if($(this).val() != ''){
+				$('#cartSize').html('');
+
+				firstStock = 0;
+
+				@foreach($stock as $stockKey => $stockVal)
+					if({{$stockKey}} == $(this).val()){
+						@foreach($stockVal['size'] as $stockSizeKey => $stockSizeVal)
+							if(firstStock == 0){
+								firstStock = 1;
+
+								$('#cartTotalStock').html('{{$stockSizeVal["total"]}}');
+							}
+
+							$('#cartSize').append('<option value="{{$stockSizeKey}}">{{$stockSizeVal["name"]}}</option>');
+						@endforeach
+					}
+				@endforeach
+			}
+		});
+
+		$('#cartSize').change(function(){
+			if($(this).val() != ''){
+				@foreach($stock as $stockKey => $stockVal)
+					if({{$stockKey}} == $('#cartColor').val()){
+						@foreach($stockVal['size'] as $stockSizeKey => $stockSizeVal)
+							if({{$stockSizeKey}} == $(this).val()){
+								$('#cartTotalStock').html('{{$stockSizeVal["total"]}}');
+							}
+						@endforeach
+					}
+				@endforeach
+			}
+		});
 	})
 </script>
 @endsection

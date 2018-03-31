@@ -16,6 +16,17 @@
 // });
 
 Route::get('/', 'HomeController@index');
+Route::get('/faq', 'ServiceController@faq');
+Route::get('/contact-us', 'ServiceController@contactUs');
+
 Route::get('/products/{id}', 'ProductController@detail');
+
 Route::get('/cart', 'CartController@index');
+Route::post('/cart/add', 'CartController@addToCart');
+
 Route::get('/checkout', 'CheckoutController@index');
+Route::get('/wishlist', 'WishlistController@index');
+
+Route::get('/profile/edit', 'ProfileController@edit');
+Route::get('/profile/address', 'ProfileController@address');
+Route::get('/profile/bank', 'ProfileController@bank');

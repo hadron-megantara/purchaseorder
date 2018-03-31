@@ -12,6 +12,6 @@ class CartController extends Controller
     }
 
     public function addToCart(Request $request){
-
+        return json_encode($request->all());
     }
 }
