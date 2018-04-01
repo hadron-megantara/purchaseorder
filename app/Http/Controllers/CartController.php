@@ -10,13 +10,73 @@ class CartController extends Controller
 {
     public function index(Request $request){
         if(Session::has('cart')){
-            $cartData = Session('cart');
+            $cartSession = Session('cart');
+            $cartProductId = '';
+            foreach($cartSession['data'] as $cartSessionKey => $cartSessionVal){
+                if($cartProductId == ''){
+                    $cartProductId = $cartSessionKey;
+                } else{
+                    $cartProductId = $cartProductId.','.$cartSessionKey;
+                }
+            }
+
+            $client = new Client;
+            $response = $client->request('GET', env('API_URL', 'http://192.168.1.103:212/api/v1/').'product/detail/list', [
+                'query' => ['owner' => env('OWNER_ID', 1), 'productIdList' => $cartProductId]
+            ]);
+
+            $responseData = json_decode($response->getBody()->getContents());
+            $productList = $responseData->isResponse->data;
+
+            $cartData = array();
+            foreach($productList as $productList){
+                $break = false;
+                foreach($cartSession['data'] as $cartSessionKey => $cartSessionVal){
+                    if(!$break){
+                        if($productList->Id == $cartSessionKey){
+                            foreach($cartSessionVal as $cartSessionKey2 => $cartSessionVal2){
+                                if(!$break){
+                                    if($productList->ColorId == $cartSessionKey2){
+                                        foreach($cartSessionVal2 as $cartSessionKey3 => $cartSessionVal3){
+                                            if(!$break){
+                                                if($productList->SizeId == $cartSessionKey3){
+                                                    $cartData[] = array(
+                                                        'productId' => $productList->Id,
+                                                        'name' => $productList->Name,
+                                                        'colorId' => $productList->ColorId,
+                                                        'colorName' => $productList->ColorName,
+                                                        'sizeId' => $productList->SizeId,
+                                                        'sizeName' => $productList->SizeName,
+                                                        'discountType' => $productList->DiscountType,
+                                                        'discount' => $productList->Discount,
+                                                        'total' => $cartSessionVal3,
+                                                        'totalAvailable' => $productList->Total,
+                                                        'price' => $productList->Price,
+                                                    );
+                                                    $break = true;
+                                                    break;
+                                                }
+                                            } else{
+                                                break;
+                                            }
+                                        }
+                                    }
+                                } else{
+                                    break;
+                                }
+                            }
+                        }
+                    } else{
+                        break;
+                    }
+                }
+            }
         } else{
             $cartData = null;
         }
 
         $data = array(
-            'cart' => $cartData
+            'cartData' => $cartData
         );
 
         return view('cart', $data);

@@ -26,31 +26,36 @@
 						<table>
 							<thead>
 								<tr>
-									<th class="product-thumbnail">Image</th>
-									<th class="product-name">Product</th>
-									<th class="product-price">Price</th>
-									<th class="product-quantity">Quantity</th>
+									<th class="product-thumbnail">Foto</th>
+									<th class="product-name">Keterangan Produk</th>
+									<th class="product-price">Harga</th>
+									<th class="product-quantity">Jumlah</th>
 									<th class="product-subtotal">Total</th>
-									<th class="product-remove">Remove</th>
+									<th class="product-remove">Hapus</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td class="product-thumbnail"><a href="#"><img src="img/product/1.jpg" alt="" /></a></td>
-									<td class="product-name"><a href="#">Vestibulum suscipit</a></td>
-									<td class="product-price"><span class="amount">£165.00</span></td>
-									<td class="product-quantity"><input type="number" value="1" /></td>
-									<td class="product-subtotal">£165.00</td>
-									<td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
-								</tr>
-								<tr>
-									<td class="product-thumbnail"><a href="#"><img src="img/product/2.jpg" alt="" /></a></td>
-									<td class="product-name"><a href="#">Vestibulum dictum magna</a></td>
-									<td class="product-price"><span class="amount">£50.00</span></td>
-									<td class="product-quantity"><input type="number" value="1" /></td>
-									<td class="product-subtotal">£50.00</td>
-									<td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
-								</tr>
+								@if($cartData != null)
+									@foreach($cartData as $cartData2)
+										<tr>
+											<td class="product-thumbnail"><a href="#"><img src="img/product/1.jpg" alt="" /></a></td>
+											<td class="product-name">
+												<a href="#">{{$cartData2['name']}}</a><br/>
+												Warna : {{$cartData2['colorName']}}<br/>
+												Ukuran : {{$cartData2['sizeName']}}<br/>
+												Warna : {{$cartData2['colorName']}}<br/>
+											</td>
+											<td class="product-price"><span class="amount">{{$cartData2['price']}}</span></td>
+											<td class="product-quantity"><input type="number" value="{{$cartData2['total']}}" /></td>
+											<td class="product-subtotal">Rp {{number_format($cartData2['total']*$cartData2['price'],0,",",".")}}</td>
+											<td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
+										</tr>
+									@endforeach
+								@else
+									<tr>
+										<td colspan="6">Keranjang Kosong</td>
+									</tr>
+								@endif
 							</tbody>
 						</table>
 					</div>
