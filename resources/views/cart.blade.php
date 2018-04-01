@@ -14,7 +14,7 @@
 </div>
 <!-- breadcrumb end -->
 
-<div class="row clear"></div>
+<div class="row clear" style="margin-bottom:30px"></div>
 
 <!-- cart-main-area start -->
 <div class="cart-main-area">
@@ -38,7 +38,7 @@
 								@if($cartData != null)
 									@foreach($cartData as $cartData2)
 										<tr>
-											<td class="product-thumbnail"><a href="#"><img src="img/product/1.jpg" alt="" /></a></td>
+											<td class="product-thumbnail"><a href="#"><img src="img/product/1.jpg" alt="" class="cartPhoto" id="photo-{{$cartData2['productId']}}-{{$cartData2['colorId']}}-{{$cartData2['sizeId']}}" /></a></td>
 											<td class="product-name">
 												<a href="#">{{$cartData2['name']}}</a><br/>
 												Warna : {{$cartData2['colorName']}}<br/>
@@ -125,4 +125,26 @@
 
 <div class="cart-space-area" style="margin-bottom:200px"></div>
 
+cartPhoto
+<script type="text/javascript">
+	$(document).ready(function(){
+		@if($cartData != null)
+			$( ".cartPhoto" ).each(function( index ) {
+				$(this).attr("src","/img/icons/ajax-loader.gif");
+				var idPhoto = $(this).attr('id');
+
+				$.ajax({
+			        type: "get",
+			        url: "/cart/get-photo",
+			        data: {
+						'id': idPhoto
+					},
+			        success: function(data) {
+						$('#'+idPhoto).attr("src","{{env('API_BASE_URL')}}app/images/"+data);
+			        }
+			    });
+			});
+		@endif
+	});
+</script>
 @endsection

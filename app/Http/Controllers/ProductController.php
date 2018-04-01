@@ -43,11 +43,7 @@ class ProductController extends Controller
                             if (!array_key_exists($stock->ColorId, $stockData)) {
                                 $stockData[$stock->ColorId] = array('name' => $stock->ColorName);
 
-                                // if (!array_key_exists($stock->SizeId, $stockData[$stock->ColorId])) {
-                                    $stockData[$stock->ColorId]['size'][$stock->SizeId] = array('name' => $stock->SizeName, 'total' => $stock->Total);
-                                // } else{
-                                //     array_push($stockData[$stock->ColorId], array($stock->SizeId => $stock->SizeName));
-                                // }
+                                $stockData[$stock->ColorId]['size'][$stock->SizeId] = array('name' => $stock->SizeName, 'total' => $stock->Total);
                             } else{
                                 $stockData[$stock->ColorId]['size'][$stock->SizeId] = array('name' => $stock->SizeName, 'total' => $stock->Total);
                             }

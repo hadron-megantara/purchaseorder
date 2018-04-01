@@ -132,4 +132,18 @@ class CartController extends Controller
 
         return json_encode($countCartTotal);
     }
+
+    public function getPhoto(Request $request){
+        $dataExplode = explode('-', $request->id);
+
+        $client = new Client;
+        $response = $client->request('GET', env('API_URL', 'http://192.168.1.103:212/api/v1/').'product/detail/photo-by-color', [
+            'query' => ['owner' => env('OWNER_ID', 1), 'productId' => $dataExplode['1'], 'color' => $dataExplode['2']]
+        ]);
+
+        $responseData = json_decode($response->getBody()->getContents());
+        $photo = $responseData->isResponse->data;
+
+        return $photo[0]->Photo;
+    }
 }

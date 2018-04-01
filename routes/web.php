@@ -23,6 +23,7 @@ Route::get('/products/{id}', 'ProductController@detail');
 
 Route::get('/cart', 'CartController@index');
 Route::post('/cart/add', 'CartController@addToCart');
+Route::get('/cart/get-photo', 'CartController@getPhoto');
 
 Route::get('/checkout', 'CheckoutController@index');
 Route::get('/wishlist', 'WishlistController@index');
