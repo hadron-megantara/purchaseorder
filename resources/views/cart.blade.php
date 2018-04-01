@@ -2,10 +2,15 @@
 
 @section('content')
 
+<?php
+	$totalPrice = 0;
+	$totalPriceFinal = 0;
+?>
+
 <!-- breadcrumb start -->
 <div class="breadcrumb-area" style="margin-top:10px">
 	<div class="container">
-		<ol class="breadcrumb" style="margin-top:-20px;margin-bottom:0px;padding-bottom:10px;border:none">
+		<ol class="breadcrumb" style="margin-top:-20px;margin-bottom:0px;padding-bottom:10px;border-bottom: 1px solid #ebebeb;">
 			<a href="/"><i class="fa fa-home"></i></a>
 			<span style="margin-left:5px;margin-right:5px">/</span>
 			Cart
@@ -37,13 +42,18 @@
 							<tbody>
 								@if($cartData != null)
 									@foreach($cartData as $cartData2)
+										<?php
+											$totalPrice = $totalPrice + ($cartData2['price'] * $cartData2['total']);
+										?>
 										<tr>
 											<td class="product-thumbnail"><a href="#"><img src="img/product/1.jpg" alt="" class="cartPhoto" id="photo-{{$cartData2['productId']}}-{{$cartData2['colorId']}}-{{$cartData2['sizeId']}}" /></a></td>
 											<td class="product-name">
-												<a href="#">{{$cartData2['name']}}</a><br/>
+												<a href="#" style="font-size:16px">{{$cartData2['name']}}</a>
+												<div class="row" style="padding-bottom:20px"></div>
 												Warna : {{$cartData2['colorName']}}<br/>
 												Ukuran : {{$cartData2['sizeName']}}<br/>
 												Warna : {{$cartData2['colorName']}}<br/>
+												<span style="display:none" id="total-{{$cartData2['productId']}}-{{$cartData2['colorId']}}-{{$cartData2['sizeId']}}"></span>
 											</td>
 											<td class="product-price"><span class="amount">{{$cartData2['price']}}</span></td>
 											<td class="product-quantity"><input type="number" value="{{$cartData2['total']}}" /></td>
@@ -51,6 +61,8 @@
 											<td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
 										</tr>
 									@endforeach
+
+									<?php $totalPriceFinal = $totalPrice; ?>
 								@else
 									<tr>
 										<td colspan="6">Keranjang Kosong</td>
@@ -73,12 +85,12 @@
 						</div>
 						<div class="col-md-6 col-sm-5 col-xs-12">
 							<div class="cart_totals">
-								<h2>Cart Totals</h2>
+								<h2>Total Keranjang</h2>
 								<table>
 									<tbody>
 										<tr class="cart-subtotal">
 											<th>Subtotal</th>
-											<td><span class="amount">Rp 1.500.000</span></td>
+											<td><span class="amount">Rp {{number_format($totalPrice,0,",",".")}}</span></td>
 										</tr>
 
 										<tr>
@@ -105,7 +117,7 @@
 										<tr class="order-total">
 											<th>Total</th>
 											<td>
-												<strong><span class="amount">Rp 1.500.000</span></strong>
+												<strong><span class="amount">Rp {{number_format($totalPriceFinal,0,",",".")}}</span></strong>
 											</td>
 										</tr>
 									</tbody>

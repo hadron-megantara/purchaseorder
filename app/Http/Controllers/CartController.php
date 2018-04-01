@@ -9,6 +9,7 @@ use App\Profile;
 class CartController extends Controller
 {
     public function index(Request $request){
+        // Session::forget('cart');
         if(Session::has('cart')){
             $cartSession = Session('cart');
             $cartProductId = '';
@@ -83,8 +84,6 @@ class CartController extends Controller
     }
 
     public function addToCart(Request $request){
-        // Session::forget('cart');
-
         $countCartTotal = 0;
         if(Session::has('cart')){
             $cartSession = Session('cart');
@@ -92,6 +91,7 @@ class CartController extends Controller
             $countCartTotal = $request->total + $cartSession['total'];
             $cartSessionTemp['total'] = $countCartTotal;
             $break = false;
+            $sessionExist = false;
 
             foreach($cartSession['data'] as $cartSessionKey => $cartSessionVal){
                 if(!$break){
@@ -102,13 +102,16 @@ class CartController extends Controller
                                     foreach($cartSessionVal2 as $cartSessionKey3 => $cartSessionVal3){
                                         if($cartSessionKey3 == $request->size){
                                             $cartSessionTemp['data'][$cartSessionKey][$cartSessionKey2][$cartSessionKey3] = $cartSessionVal3 + (int) $request->total;
+                                            $sessionExist = true;
                                             $break = true;
                                             break;
                                         } else{
+                                            $sessionExist = true;
                                             $cartSessionTemp['data'][$cartSessionKey][$cartSessionKey2][$request->size] = (int) $request->total;
                                         }
                                     }
                                 } else{
+                                    $sessionExist = true;
                                     $cartSessionTemp['data'][$cartSessionKey][$request->color][$request->size] = (int) $request->total;
                                 }
                             } else{
@@ -116,7 +119,8 @@ class CartController extends Controller
                             }
                         }
                     } else{
-                        $cartSessionTemp['data'][$cartSessionKey][$request->color][$request->size] = (int)$request->total;
+                        $sessionExist = true;
+                        $cartSessionTemp['data'][$request->id][$request->color][$request->size] = (int)$request->total;
                     }
                 } else{
                     break;
