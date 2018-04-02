@@ -12,6 +12,7 @@ class CartController extends Controller
         // Session::forget('cart');
         if(Session::has('cart')){
             $cartSession = Session('cart');
+            // dd($cartSession);
             $cartProductId = '';
             foreach($cartSession['data'] as $cartSessionKey => $cartSessionVal){
                 if($cartProductId == ''){
@@ -149,5 +150,42 @@ class CartController extends Controller
         $photo = $responseData->isResponse->data;
 
         return $photo[0]->Photo;
+    }
+
+    public function updateCart(Request $request){
+        if(Session::has('cart')){
+            $sessionCart = Session('cart');
+            $sessionCartTemp = $sessionCart;
+            $data = explode('-',$request->id);
+            $break = false;
+
+            foreach($sessionCart['data'] as $sessionCartKey => $sessionCartVal){
+                if(!$break){
+                    if($sessionCartKey == $data[1]){
+                        foreach($sessionCartVal as $sessionCartKey2 => $sessionCartVal2){
+                            if(!$break){
+                                if($sessionCartKey2 == $data[2]){
+                                    foreach($sessionCartVal2 as $sessionCartKey3 => $sessionCartVal3){
+                                        if($sessionCartKey3 == $data[3]){
+                                            $sessionCartTemp[$sessionCartKey][$sessionCartKey2][$sessionCartKey3] = $request->total;
+                                            $break = true;
+                                            break;
+                                        }
+                                    }
+                                }
+                            } else{
+                                break;
+                            }
+                        }
+                    }
+                } else{
+                    break;
+                }
+            }
+
+            Session::put('cart', $sessionCartTemp);
+        } else{
+            return 'error';
+        }
     }
 }

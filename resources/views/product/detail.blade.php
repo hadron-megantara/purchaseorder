@@ -151,10 +151,7 @@
 
 			var target = document.getElementById('body');
 			var spinner = new Spinner(opts).spin(target);
-console.log('{{$detail->Id}}');
-console.log($('#cartColor').find(":selected").val());
-console.log($('#cartSize').find(":selected").val());
-console.log($('#cartTotal').val());
+
 			$.ajax({
 		        type: "POST",
 		        url: "/cart/add",

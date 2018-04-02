@@ -53,10 +53,13 @@
 												Warna : {{$cartData2['colorName']}}<br/>
 												Ukuran : {{$cartData2['sizeName']}}<br/>
 												Warna : {{$cartData2['colorName']}}<br/>
-												<span style="display:none" id="total-{{$cartData2['productId']}}-{{$cartData2['colorId']}}-{{$cartData2['sizeId']}}"></span>
+												<span style="display:none" id="hidden-total-price-total-{{$cartData2['productId']}}-{{$cartData2['colorId']}}-{{$cartData2['sizeId']}}">{{$cartData2['total']*$cartData2['price']}}</span>
+												<span style="display:none" id="hidden-total-total-{{$cartData2['productId']}}-{{$cartData2['colorId']}}-{{$cartData2['sizeId']}}">{{$cartData2['total']}}</span>
+												<span style="display:none" id="hidden-price-total-{{$cartData2['productId']}}-{{$cartData2['colorId']}}-{{$cartData2['sizeId']}}">{{$cartData2['price']}}</span>
+												<span style="display:none" id="available-total-{{$cartData2['productId']}}-{{$cartData2['colorId']}}-{{$cartData2['sizeId']}}">{{$cartData2['totalAvailable']}}</span>
 											</td>
-											<td class="product-price"><span class="amount">{{$cartData2['price']}}</span></td>
-											<td class="product-quantity"><input type="number" value="{{$cartData2['total']}}" /></td>
+											<td class="product-price"><span class="amount">Rp {{number_format($cartData2['price'],0,",",".")}}</span></td>
+											<td class="product-quantity"><input type="number" value="{{$cartData2['total']}}" class="totalChange" id="total-{{$cartData2['productId']}}-{{$cartData2['colorId']}}-{{$cartData2['sizeId']}}" /></td>
 											<td class="product-subtotal">Rp {{number_format($cartData2['total']*$cartData2['price'],0,",",".")}}</td>
 											<td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
 										</tr>
@@ -90,7 +93,7 @@
 									<tbody>
 										<tr class="cart-subtotal">
 											<th>Subtotal</th>
-											<td><span class="amount">Rp {{number_format($totalPrice,0,",",".")}}</span></td>
+											<td><span class="amount">Rp <span id="cartTotalSubFinal">{{number_format($totalPrice,0,",",".")}}</span></span></td>
 										</tr>
 
 										<tr>
@@ -117,7 +120,7 @@
 										<tr class="order-total">
 											<th>Total</th>
 											<td>
-												<strong><span class="amount">Rp {{number_format($totalPriceFinal,0,",",".")}}</span></strong>
+												<strong><span class="amount">Rp <span id="cartTotalFinal">{{number_format($totalPriceFinal,0,",",".")}}</span></span></strong>
 											</td>
 										</tr>
 									</tbody>
@@ -157,6 +160,82 @@ cartPhoto
 			    });
 			});
 		@endif
+
+		$('.totalChange').blur(function(){
+			var opts = {
+			  lines: 13, // The number of lines to draw
+			  length: 38, // The length of each line
+			  width: 17, // The line thickness
+			  radius: 45, // The radius of the inner circle
+			  scale: 1, // Scales overall size of the spinner
+			  corners: 1, // Corner roundness (0..1)
+			  color: '#ffffff', // CSS color or array of colors
+			  fadeColor: 'transparent', // CSS color or array of colors
+			  opacity: 0.25, // Opacity of the lines
+			  rotate: 0, // The rotation offset
+			  direction: 1, // 1: clockwise, -1: counterclockwise
+			  speed: 1, // Rounds per second
+			  trail: 60, // Afterglow percentage
+			  fps: 20, // Frames per second when using setTimeout() as a fallback in IE 9
+			  zIndex: 2e9, // The z-index (defaults to 2000000000)
+			  className: 'spinner', // The CSS class to assign to the spinner
+			  top: '50%', // Top position relative to parent
+			  left: '50%', // Left position relative to parent
+			  position: 'absolute' // Element positioning
+			};
+
+			var target = document.getElementById('body');
+			var spinner = new Spinner(opts).spin(target);
+
+			var totalNew = parseInt($(this).val());
+			var isUpdate = 0;
+			if(totalNew <= parseInt($('#available-'+$(this).attr('id')).html())){
+				var totalFinalPriceSub = $('#cartTotalSubFinal').html();
+				totalFinalPriceSub = totalFinalPriceSub.toString();
+				var totalFinalPrice = $('#cartTotalFinal').html();
+				totalFinalPrice = totalFinalPrice.toString();
+
+				total = parseInt(totalNew) - parseInt($('#hidden-total-'+$(this).attr('id')).html());
+				$('#hidden-total-'+$(this).attr('id')).html(totalNew);
+				totalPrice = total * $('#hidden-price-'+$(this).attr('id')).html();
+				totalFinalPriceSub = totalPrice + parseInt(totalFinalPriceSub.split('.').join(""));
+				totalFinalPrice = totalPrice + parseInt(totalFinalPrice.split('.').join(""));
+
+				$('#cartTotalSubFinal').html(totalFinalPriceSub);
+				$('#cartTotalSubFinal').priceFormat({
+		            prefix: '',
+		            centsLimit: 0,
+		            thousandsSeparator: '.'
+		        });
+
+				$('#cartTotalFinal').html(totalFinalPrice);
+				$('#cartTotalFinal').priceFormat({
+		            prefix: '',
+		            centsLimit: 0,
+		            thousandsSeparator: '.'
+		        });
+
+				isUpdate = 1;
+			} else{
+				console.log('salah');
+			}
+
+			if(isUpdate == 1){
+				$.ajax({
+					type: "get",
+					url: "/cart/update",
+					data: {
+						'id': $(this).attr('id'),
+						'total': $(this).val(),
+					},
+					success: function(data) {
+						// console.log(data);
+					}
+				});
+			}
+
+			spinner.stop();
+		});
 	});
 </script>
 @endsection
