@@ -162,6 +162,7 @@
 					'total' : $('#cartTotal').val()
 				},
 		        success: function(data) {
+					console.log(data);
 					spinner.stop();
 					$('#cartCountInfo').css({"opacity": "1", "visibility": "visible"});
 					setTimeout(hideCartCountInfo, 3000);

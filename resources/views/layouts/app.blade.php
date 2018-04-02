@@ -62,6 +62,7 @@
     @yield('content')
     @include('includes.footer')
 
+    <script src="/js/infinite-scroll.pkgd.min.js"></script>
     <script src="/js/owl.carousel.min.js"></script>
     <script src="/js/ajax-mail.js"></script>
     <script src="/js/headroom.min.js"></script>

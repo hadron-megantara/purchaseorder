@@ -128,8 +128,8 @@ class CartController extends Controller
                 }
             }
         } else{
-            $countCartTotal = $request->total;
-            $cartSessionTemp['total'] = $countCartTotal;
+            $countCartTotal = (int) $request->total;
+            $cartSessionTemp['total'] = (int) $countCartTotal;
             $cartSessionTemp['data'][$request->id] = array($request->color => array($request->size => (int) $request->total));
         }
 
@@ -167,7 +167,45 @@ class CartController extends Controller
                                 if($sessionCartKey2 == $data[2]){
                                     foreach($sessionCartVal2 as $sessionCartKey3 => $sessionCartVal3){
                                         if($sessionCartKey3 == $data[3]){
-                                            $sessionCartTemp[$sessionCartKey][$sessionCartKey2][$sessionCartKey3] = $request->total;
+                                            $sessionCartTemp['data'][$sessionCartKey][$sessionCartKey2][$sessionCartKey3] = $request->total;
+                                            $break = true;
+                                            break;
+                                        }
+                                    }
+                                }
+                            } else{
+                                break;
+                            }
+                        }
+                    }
+                } else{
+                    break;
+                }
+            }
+
+            Session::put('cart', $sessionCartTemp);
+        } else{
+            return 'error';
+        }
+    }
+
+    public function deleteCart(Request $request){
+        if(Session::has('cart')){
+            $sessionCart = Session('cart');
+            $sessionCartTemp = $sessionCart;
+            $data = explode('-',$request->id);
+
+            $break = false;
+
+            foreach($sessionCart['data'] as $sessionCartKey => $sessionCartVal){
+                if(!$break){
+                    if($sessionCartKey == $data[1]){
+                        foreach($sessionCartVal as $sessionCartKey2 => $sessionCartVal2){
+                            if(!$break){
+                                if($sessionCartKey2 == $data[2]){
+                                    foreach($sessionCartVal2 as $sessionCartKey3 => $sessionCartVal3){
+                                        if($sessionCartKey3 == $data[3]){
+                                            unset($sessionCartTemp['data'][$sessionCartKey][$sessionCartKey2][$sessionCartKey3]);
                                             $break = true;
                                             break;
                                         }

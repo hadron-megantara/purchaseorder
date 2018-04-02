@@ -24,14 +24,14 @@
                                 <li>
                                     <a href="/">Home</a>
                                 </li>
-                                <li><a href="">Jilbab</a>
+                                <li><a href="#">Jilbab</a>
                                     <ul class="submenu" style="margin-top:-20px">
-                                        <li><a href="/categories/hijab" style="border-bottom: 1px solid #ebebeb;">Semua Jilbab</a></li>
-                                        <li><a href="/categories/hijab/ciput">Ciput</a></li>
-                                        <li><a href="/categories/hijab/instant">Kerudung Instan</a></li>
-                                        <li><a href="/categories/hijab/khimar">Khimar</a></li>
-                                        <li><a href="/categories/hijab/pashmina">Pashmina</a></li>
-                                        <li><a href="/categories/hijab/square">Hijab Segi Empat</a></li>
+                                        <li><a href="/categories/jilbab" style="border-bottom: 1px solid #ebebeb;">Semua Jilbab</a></li>
+                                        <li><a href="/categories/jilbab/ciput">Ciput</a></li>
+                                        <li><a href="/categories/jilbab/instant">Kerudung Instan</a></li>
+                                        <li><a href="/categories/jilbab/khimar">Khimar</a></li>
+                                        <li><a href="/categories/jilbab/pashmina">Pashmina</a></li>
+                                        <li><a href="/categories/jilbab/square">Hijab Segi Empat</a></li>
                                     </ul>
                                 </li>
                                 <li><a>Pakaian</a>

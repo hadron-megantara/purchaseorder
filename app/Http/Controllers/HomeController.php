@@ -11,7 +11,7 @@ class HomeController extends Controller
         $client = new Client;
 
         try{
-            $response = $client->request('GET', env('API_URL', 'http://192.168.1.103:212/api/v1/').'product/list', [
+            $response = $client->request('GET', env('API_URL', 'http://192.168.1.104:212/api/v1/').'product/list/event/new', [
                 'query' => ['owner' => env('OWNER_ID', 1)]
             ]);
 
@@ -27,7 +27,7 @@ class HomeController extends Controller
                 return view('home', $data);
             }
         } catch (\Exception $e) {
-
+            print('Failed to Connect to Server');
         }
     }
 }

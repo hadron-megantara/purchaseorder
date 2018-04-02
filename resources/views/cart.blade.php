@@ -45,7 +45,7 @@
 										<?php
 											$totalPrice = $totalPrice + ($cartData2['price'] * $cartData2['total']);
 										?>
-										<tr>
+										<tr id="row-remove-{{$cartData2['productId']}}-{{$cartData2['colorId']}}-{{$cartData2['sizeId']}}">
 											<td class="product-thumbnail"><a href="#"><img src="img/product/1.jpg" alt="" class="cartPhoto" id="photo-{{$cartData2['productId']}}-{{$cartData2['colorId']}}-{{$cartData2['sizeId']}}" /></a></td>
 											<td class="product-name">
 												<a href="#" style="font-size:16px">{{$cartData2['name']}}</a>
@@ -61,7 +61,7 @@
 											<td class="product-price"><span class="amount">Rp {{number_format($cartData2['price'],0,",",".")}}</span></td>
 											<td class="product-quantity"><input type="number" value="{{$cartData2['total']}}" class="totalChange" id="total-{{$cartData2['productId']}}-{{$cartData2['colorId']}}-{{$cartData2['sizeId']}}" /></td>
 											<td class="product-subtotal">Rp {{number_format($cartData2['total']*$cartData2['price'],0,",",".")}}</td>
-											<td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
+											<td class="product-remove"><a href="#" class="removeItem" id="remove-{{$cartData2['productId']}}-{{$cartData2['colorId']}}-{{$cartData2['sizeId']}}"><i class="fa fa-times"></i></a></td>
 										</tr>
 									@endforeach
 
@@ -126,7 +126,7 @@
 									</tbody>
 								</table>
 								<div class="wc-proceed-to-checkout">
-									<a href="#">LANJUT KE PEMBAYARAN</a>
+									<a href="/checkout">LANJUT KE PEMBAYARAN</a>
 								</div>
 							</div>
 						</div>
@@ -235,6 +235,22 @@ cartPhoto
 			}
 
 			spinner.stop();
+		});
+
+		$('.removeItem').click(function(){
+			var idRemoveItem = $(this).attr('id');
+
+			$.ajax({
+				type: "get",
+				url: "/cart/delete",
+				data: {
+					'id': idRemoveItem,
+				},
+				success: function(data) {
+					console.log(idRemoveItem);
+					$('#row-'+idRemoveItem).remove();
+				}
+			});
 		});
 	});
 </script>

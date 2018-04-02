@@ -19,11 +19,15 @@ Route::get('/', 'HomeController@index');
 Route::get('/faq', 'ServiceController@faq');
 Route::get('/contact-us', 'ServiceController@contactUs');
 
-Route::get('/products/{id}', 'ProductController@detail');
+Route::get('/products/{name}', 'ProductController@product');
+Route::get('/products/detail/{id}', 'ProductController@detail');
+
+Route::get('/categories/{name}', 'ProductController@category');
 
 Route::get('/cart', 'CartController@index');
 Route::post('/cart/add', 'CartController@addToCart');
 Route::get('/cart/update', 'CartController@updateCart');
+Route::get('/cart/delete', 'CartController@deleteCart');
 Route::get('/cart/get-photo', 'CartController@getPhoto');
 
 Route::get('/checkout', 'CheckoutController@index');
