@@ -11,13 +11,14 @@ class HomeController extends Controller
         $client = new Client;
 
         try{
-            $response = $client->request('GET', env('API_URL', 'http://192.168.1.104:212/api/v1/').'product/list/event/new', [
+            $response = $client->request('GET', env('API_URL', 'http://192.168.1.103:212/api/v1/').'product/list/event/new', [
                 'query' => ['owner' => env('OWNER_ID', 1)]
             ]);
 
             $responseData = json_decode($response->getBody()->getContents());
 
-            if($responseData->status == 'success'){
+            if($responseData->isError == false){
+                $responseData = $responseData->isResponse;
                 $product = $responseData->data;
 
                 $data = array(

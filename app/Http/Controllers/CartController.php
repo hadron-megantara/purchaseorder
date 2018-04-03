@@ -9,7 +9,6 @@ use App\Profile;
 class CartController extends Controller
 {
     public function index(Request $request){
-        // Session::forget('cart');
         if(Session::has('cart')){
             $cartSession = Session('cart');
             // dd($cartSession);

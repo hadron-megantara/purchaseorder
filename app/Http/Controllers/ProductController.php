@@ -17,8 +17,8 @@ class ProductController extends Controller
 
             $responseData = json_decode($response->getBody()->getContents());
 
-            if($responseData->status == 'success'){
-                $detail = $responseData->data->detail[0];
+            if($responseData->isError == false){
+                $detail = $responseData->isResponse->data->detail[0];
 
                 $client = new Client;
                 try{
@@ -28,8 +28,8 @@ class ProductController extends Controller
 
                     $responseData = json_decode($response->getBody()->getContents());
 
-                    if($responseData->status == 'success'){
-                        $photo = $responseData->data->detail;
+                    if($responseData->isError == false){
+                        $photo = $responseData->isResponse->data->detail;
 
                         $response = $client->request('GET', env('API_URL', 'http://192.168.1.103:212/api/v1/').'product/detail/stock', [
                             'query' => ['owner' => env('OWNER_ID', 1), 'productId' => $id]
@@ -80,7 +80,7 @@ class ProductController extends Controller
 
             $responseData = json_decode($response->getBody()->getContents());
 
-            $product = $responseData->data->product;
+            $product = $responseData->isResponse->data->product;
         } catch (\Exception $e) {
             print('Failed to Connect to Server');
         }
