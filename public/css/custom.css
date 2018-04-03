@@ -28,3 +28,9 @@ Note: This is the file where you can add your custom styles to change the look o
 .visible-xs, .visible-sm, .visible-md, .visible-lg {
     display: none !important;
 }
+
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    red;
+     opacity: 1 !important;
+}

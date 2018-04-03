@@ -92,18 +92,22 @@
                         </ul>
                     </div>
                     <div class="setting-menu display-inline">
-                        <span class="fa fa-user"></span> <a href="/login">Sign In</a> | <a href="/register">Register</a>
-                        {{-- <ul class="content-nav toogle-content">
-                            <li class="currencies-block-top">
-                                <div class="current"><b>My Account</b></div>
-                                <ul>
-                                    <li><a href="#">My account</a></li>
-                                    <li><a href="#">My wishlist</a></li>
-                                    <li><a href="#">Checkout</a></li>
-                                    <li><a href="#">Log in</a></li>
-                                </ul>
-                            </li>
-                        </ul> --}}
+                        @if($user == null)
+                            <span class="fa fa-user"></span> <a href="/login">Sign In</a> | <a href="/register">Register</a>
+                        @else
+                            <div class="icon-nav current userMenu"></div>
+                            <ul class="content-nav toogle-content userMenu userMenuDropDown" style="margin-top:-20px">
+                                <li class="currencies-block-top">
+                                    <div class="current"><b>My Account</b></div>
+                                    <ul>
+                                        <li><a href="#">My account</a></li>
+                                        <li><a href="#">My wishlist</a></li>
+                                        <li><a href="#">Checkout</a></li>
+                                        <li><a href="#">Log in</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -214,6 +218,14 @@
 	$(document).ready(function(){
         $('#cartCountDiv').hover(function(){
             $('#cartCountInfo').css({"opacity": "0", "visibility": "hidden"});
+        });
+
+        $('.userMenu').hover(function(){
+            $('.userMenuDropDown').show();
+        });
+
+        $('.userMenu').mouseleave(function(){
+            $('.userMenuDropDown').hide();
         });
     });
 </script>

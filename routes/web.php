@@ -19,6 +19,14 @@ Route::get('/', 'HomeController@index');
 Route::get('/faq', 'ServiceController@faq');
 Route::get('/contact-us', 'ServiceController@contactUs');
 
+Route::get('/login', 'Auth\LoginController@index');
+Route::post('/login', 'Auth\LoginController@login');
+
+Route::get('/register', 'Auth\RegisterController@index');
+Route::post('/register', 'Auth\RegisterController@create');
+
+Route::get('/password/reset', 'Auth\ForgotPasswordController@forgot');
+
 Route::get('/products/{name}', 'ProductController@product');
 Route::get('/products/detail/{id}', 'ProductController@detail');
 
@@ -31,8 +39,14 @@ Route::get('/cart/delete', 'CartController@deleteCart');
 Route::get('/cart/get-photo', 'CartController@getPhoto');
 
 Route::get('/checkout', 'CheckoutController@index');
+Route::post('/checkout/add', 'CheckoutController@add');
+
 Route::get('/wishlist', 'WishlistController@index');
 
 Route::get('/profile/edit', 'ProfileController@edit');
 Route::get('/profile/address', 'ProfileController@address');
 Route::get('/profile/bank', 'ProfileController@bank');
+
+Route::get('/config/province/get', 'ConfigController@getProvince');
+Route::get('/config/city/get', 'ConfigController@getCity');
+Route::get('/config/district/get', 'ConfigController@getDistrict');

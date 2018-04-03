@@ -6,9 +6,9 @@
     Version: 1.0
 
 -----------------------------------------------------------------------------------
-    
+
     [Table of contents]
-	
+
     1. Promo style
     2. Breadcrumb style
     3. Banner area
@@ -414,7 +414,7 @@ a#scrollUp {
     width: 100%;
     z-index: 1;
 }
-/*----------------------------------- 
+/*-----------------------------------
     6. Wishlist area
 -------------------------------------*/
 
@@ -496,7 +496,7 @@ a#scrollUp {
 .product-name > a:hover {
     color: #ffae00
 }
-/*=========================== 
+/*===========================
     7. Cart page
 ============================= */
 
@@ -758,7 +758,7 @@ a.shipping-calculator-button:hover {
 .wc-proceed-to-checkout a:hover {
     background: #252525;
 }
-/*=========================== 
+/*===========================
     8. Checkout page
 ============================= */
 
@@ -1297,4 +1297,9 @@ label.inline > a {
 }
 .mailchimp-success {
   color: green;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    red;
+     opacity: 1 !important;
 }

@@ -4,10 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use Session;
 
 class HomeController extends Controller
 {
     public function index(Request $request){
+        $user = null;
+        if(Session::has('user')){
+            $user = session('user');
+        }
+
         $client = new Client;
 
         try{
@@ -23,6 +29,7 @@ class HomeController extends Controller
 
                 $data = array(
                     'product' => $product,
+                    'user' => $user,
                 );
 
                 return view('home', $data);

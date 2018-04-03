@@ -1,6 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
+
+<style>
+#cover {
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   opacity: 0.80;
+   background: #aaa;
+   z-index: 10;
+   display: none;
+}
+</style>
 <!-- checkout-area start -->
 <div class="checkout-area" style="margin-top:50px">
 	<div class="container">
@@ -13,51 +27,52 @@
 							<div class="col-md-12">
 								<div class="checkout-form-list">
 									<label>Nama Lengkap <span class="required">*</span></label>
-									<input type="text" placeholder="" class="form-control" />
+									<input type="text" placeholder="" class="form-control" id="cartFullname" />
 								</div>
 							</div>
 							<div class="col-md-12">
 								<div class="checkout-form-list">
 									<label>Nomor Handphone/Telepon <span class="required">*</span></label>
-									<input type="text" placeholder="" class="form-control" />
-								</div>
-							</div>
-							<div class="col-md-12">
-								<div class="country-select">
-									<label>Negara <span class="required">*</span></label>
-									<select class="form-control">
-									  <option value="volvo">Indonesia</option>
-									</select>
+									<input type="text" placeholder="" class="form-control" id="cartPhoneNumber" />
 								</div>
 							</div>
 							<div class="col-md-12">
 								<div class="country-select">
 									<label>Provinsi <span class="required">*</span></label>
-									<select class="form-control">
-									  <option value="volvo">Indonesia</option>
+									<select class="form-control" id="cartProvince">
+									  <option value="">--- Pilih Provinsi ---</option>
+									  @foreach($province as $provinceData)
+										  <option value="{{$provinceData->Id}}">{{$provinceData->Name}}</option>
+									  @endforeach
 									</select>
 								</div>
 							</div>
 							<div class="col-md-12">
 								<div class="country-select">
 									<label>Kota/Kabupaten <span class="required">*</span></label>
-									<select class="form-control">
-									  <option value="volvo">Indonesia</option>
+									<select class="form-control" id="cartCity">
+									  	<option value="">--- Pilih Kota/Kabupaten ---</option>
 									</select>
 								</div>
 							</div>
 							<div class="col-md-12">
 								<div class="country-select">
 									<label>Kecamatan <span class="required">*</span></label>
-									<select class="form-control">
-									  <option value="volvo">Indonesia</option>
+									<select class="form-control" id="cartDistrict">
+									  	<option value="">--- Pilih Kecamatan ---</option>
 									</select>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="checkout-form-list">
+									<label>Alamat <span class="required">*</span></label>
+									<textarea class="form-control" id="cartAddress" placeholder="" rows="4" style="resize:none"></textarea>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="checkout-form-list">
 									<label>Kode POS <span class="required">*</span></label>
-									<input type="text" placeholder="Postcode / Zip" />
+									<input type="text" placeholder="Kode POS (tidak wajib)" id="cartPostCode" />
 								</div>
 							</div>
 							<div class="col-md-6">&nbsp;</div>
@@ -111,7 +126,7 @@
 									</tr>
 									<tr class="order-total">
 										<th>Total Pemesanan</th>
-										<td><strong><span class="amount">Rp {{number_format($cartTotalProductPrice,0,",",".")}}</span></strong>
+										<td><strong><span class="amount" id="cartFinalPrice">Rp {{number_format($cartTotalProductPrice,0,",",".")}}</span></strong>
 										</td>
 									</tr>
 								</tfoot>
@@ -120,7 +135,7 @@
 						<div class="payment-method">
 							<div class="payment-accordion">
                                 <div class="order-button-payment">
-                                    <input type="submit" value="Lanjut ke Pembayaran" />
+                                    <button type="button" class="btn btn-primary form-control" id="checkoutProcess" style="background-color:#ffae00">Lanjut ke Pembayaran</button>
                                 </div>
 						    </div>
 					    </div>
@@ -131,5 +146,102 @@
 	</div>
 </div>
 <!-- checkout-area end -->
+
+<div id="cover"> </div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#cartProvince').change(function(){
+			$.ajax({
+				type: "get",
+				url: "/config/city/get",
+				data: {
+					'provinceId': $(this).val(),
+				},
+				success: function(data) {
+					$('#cartCity').html('<option value="">--- Pilih Kota/Kabupaten ---</option>');
+
+					$.each(data, function(k, v) {
+						$('#cartCity').append('<option value="'+v.Id+'">'+v.Name+'</option>');
+					});
+				}
+			});
+		});
+
+		$('#cartCity').change(function(){
+			$.ajax({
+				type: "get",
+				url: "/config/district/get",
+				data: {
+					'cityId': $(this).val(),
+				},
+				success: function(data) {
+					$('#cartDistrict').html('<option value="">--- Pilih Kecamatan ---</option>');
+
+					$.each(data, function(k, v) {
+						$('#cartDistrict').append('<option value="'+v.Id+'">'+v.Name+'</option>');
+					});
+				}
+			});
+		});
+
+		$('#checkoutProcess').click(function(){
+			var opts = {
+			  lines: 13, // The number of lines to draw
+			  length: 38, // The length of each line
+			  width: 17, // The line thickness
+			  radius: 45, // The radius of the inner circle
+			  scale: 1, // Scales overall size of the spinner
+			  corners: 1, // Corner roundness (0..1)
+			  color: '#ffffff', // CSS color or array of colors
+			  fadeColor: 'transparent', // CSS color or array of colors
+			  opacity: 0.25, // Opacity of the lines
+			  rotate: 0, // The rotation offset
+			  direction: 1, // 1: clockwise, -1: counterclockwise
+			  speed: 1, // Rounds per second
+			  trail: 60, // Afterglow percentage
+			  fps: 20, // Frames per second when using setTimeout() as a fallback in IE 9
+			  zIndex: 2e9, // The z-index (defaults to 2000000000)
+			  className: 'spinner', // The CSS class to assign to the spinner
+			  top: '50%', // Top position relative to parent
+			  left: '50%', // Left position relative to parent
+			  position: 'absolute' // Element positioning
+			};
+
+			$("#cover").fadeIn(100);
+			var target = document.getElementById('body');
+			var spinner = new Spinner(opts).spin(target);
+
+			var fullname = $('#cartFullname').val();
+			var phone = $('#cartPhoneNumber').val();
+			var province = $('#cartProvince').val();
+			var city = $('#cartCity').val();
+			var district = $('#cartDistrict').val();
+			var postCode = $('#cartPostCode').val();
+			var finalPrice = $('#cartFinalPrice').html();
+			finalPrice = finalPrice.split('.').join("");
+            finalPrice = finalPrice.replace(/Rp /gi,'');
+
+			$.ajax({
+				type: "post",
+				url: "/checkout/add",
+				data: {
+					'fullname': fullname,
+					'phone': phone,
+					'province': province,
+					'city': city,
+					'district': district,
+					'postCode': postCode,
+					'finalPrice': finalPrice,
+				},
+				success: function(data) {
+					console.log(data);
+					spinner.stop();
+					$("#cover").fadeOut(100);
+				}
+			});
+		});
+	});
+</script>
 
 @endsection
