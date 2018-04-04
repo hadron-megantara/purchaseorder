@@ -21,6 +21,7 @@ Route::get('/contact-us', 'ServiceController@contactUs');
 
 Route::get('/login', 'Auth\LoginController@index');
 Route::post('/login', 'Auth\LoginController@login');
+Route::get('/signout', 'Auth\LoginController@signout');
 
 Route::get('/register', 'Auth\RegisterController@index');
 Route::post('/register', 'Auth\RegisterController@create');

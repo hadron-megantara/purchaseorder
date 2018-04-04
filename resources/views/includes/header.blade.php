@@ -5,7 +5,20 @@
     } else{
         $cartCount = 0;
     }
+
+    $user = null;
+    if(Session::has('user')){
+        $user = session('user');
+        $firstname = explode(' ', $user['fullname']);
+        $firstname = substr($firstname[0], 0, 10);
+    }
 ?>
+
+<style>
+    .userMenu li a:hover{
+        background-color: #ebebeb;
+    }
+</style>
 
 <!-- header start -->
 <header class="header-pos elements1" style="border-bottom: 1px solid #ebebeb;">
@@ -63,47 +76,26 @@
                     </div>
                     <div class="shopping-cart ml-20 display-inline" id="cartCountDiv">
                         <a href="/cart"><b>keranjang</b>(<span id="cartCount">@if(isset($cartCount)) {{$cartCount}} @else 0 @endif</span>)</a>
-                        {{-- <ul>
-                            <li>
-                                <div class="cart-img">
-                                    <a href="#"><img src="{{env('API_BASE_URL').'app/images/f1c65761-7ab4-485b-8d2b-1fd0e56c621f/47d1e335-9bc4-419b-9920-310828d1b54c/big_v1-539-35593-62917-8113-46-82624-2.jpg'}}" style="max-width:80px;max-height:92px" alt="" /></a>
-                                </div>
-                                <div class="cart-content">
-                                    <h3><a href="#"> 1 X Salma Veil</a> </h3>
-                                    <span><b>Cokelat</b></span>
-                                    <span class="cart-price">Rp 300.000</span>
-                                </div>
-                                <div class="cart-del">
-                                    <i class="fa fa-times-circle"></i>
-                                </div>
-                            </li>
-                            <li>
-                                <hr class="shipping-border" />
-                                <div class="shipping">
-                                    <span class="f-left"> Total </span>
-                                    <span class="f-right cart-price">Rp 315.000</span>
-                                </div>
-                            </li>
-                            <li class="checkout m-0"><a href="#">checkout <i class="fa fa-angle-right"></i></a></li>
-                        </ul> --}}
 
                         <ul style="margin-top:-50px;background:#FBB62D;height:30px;padding-top:-10px;width:200px" id="cartCountInfo">
                             <li style="color:#ffffff;margin-top:-10px"><span class="fa fa-info-circle"></span> Keranjang Diperbaharui</li>
                         </ul>
                     </div>
+                    <div class="display-inline" style="margin-left:10px">
+                        <a href="/wishlist" style="color:#000000"><span class="fa fa-heart-o"></span><b style="color:#ffae00">WISHLIST</b></a>
+                    </div>
                     <div class="setting-menu display-inline">
                         @if($user == null)
                             <span class="fa fa-user"></span> <a href="/login">Sign In</a> | <a href="/register">Register</a>
                         @else
-                            <div class="icon-nav current userMenu"></div>
-                            <ul class="content-nav toogle-content userMenu userMenuDropDown" style="margin-top:-20px">
-                                <li class="currencies-block-top">
-                                    <div class="current"><b>My Account</b></div>
+                            <span class="userMenu" style="color:#007bff;"><span class="fa fa-user"> Hi, <span style="font-weight:bold">{{$firstname}}</span></span></span>
+                            <ul class="content-nav toogle-content userMenu userMenuDropDown" style="margin-top:-30px;padding:0px">
+                                <li class="currencies-block-top" style="padding-top:0px;margin-top:-20px">
+                                    <div class="current" style="height:30px;background:none;background-color:none"></div>
+                                    <div class="current" style="cursor:auto"><b>Akun Saya</b></div>
                                     <ul>
-                                        <li><a href="#">My account</a></li>
-                                        <li><a href="#">My wishlist</a></li>
-                                        <li><a href="#">Checkout</a></li>
-                                        <li><a href="#">Log in</a></li>
+                                        <li><a href="/profile"><span class="fa fa-user"></span> Profil</a></li>
+                                        <li><a href="/signout"><span class="fa fa-sign-out"></span> Sign Out</a></li>
                                     </ul>
                                 </li>
                             </ul>

@@ -12,4 +12,11 @@ class LoginController extends Controller
     public function index(Request $request){
         return view('auth.login');
     }
+
+    public function signout(Request $request){
+        Session::forget('user');
+        Session::forget('cart');
+
+        return redirect('/');
+    }
 }
