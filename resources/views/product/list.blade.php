@@ -40,7 +40,7 @@
 						<ul class="sidebar-menu">
 							@foreach($dataCategory as $dataCategoryList)
 							<li>
-								<input type="checkbox" value="{{$dataCategoryList->Id}}" style="margin-right:10px">{{$dataCategoryList->Name}}
+								<input class="categoryCheck" type="checkbox" value="{{$dataCategoryList->Id}}" style="margin-right:10px">{{$dataCategoryList->Name}}
 							</li>
 							@endforeach
 						</ul>
@@ -107,11 +107,17 @@
 										<div class="product-wrapper mb-40">
 											<div class="product-img">
 												<a href="/products/detail/{{$productListData->Id}}">
-													<img src="{{env('API_BASE_URL').'app/images/'.$productListData->Photo}}" alt="" style="height:410px"/>
+													<img src="{{$productListData->Photo}}" alt="" style="height:410px"/>
 												</a>
-												<span class="new-label">New</span>
+												@if($productListData->Discount != null)
+													@if($productListData->DiscountType == "Percent")
+														<span class="new-label" style="padding-left:10px;padding-right:10px; background-color:red;text-transform: capitalize;;">Diskon {{$productListData->Discount}} %</span>
+													@else
+														<span class="new-label" style="background-color:red;padding-left:5px;padding-right:5px;text-transform: capitalize;">Diskon Rp {{number_format($productListData->Discount,0,",",".")}}</span>
+													@endif
+												@endif
 												<div class="product-action">
-													<a href="{{env('API_BASE_URL').'app/images/'.$productListData->Photo}}"><i class="pe-7s-look"></i></a>
+													<a href="{{$productListData->Photo}}"><i class="pe-7s-look"></i></a>
 												</div>
 											</div>
 											<div class="product-content">
@@ -120,7 +126,10 @@
 												</div>
 												<div class="price-reviews">
 													<div class="price-box">
-														<span class="price product-price">Rp {{number_format($productListData->Price,0,",",".")}}</span>
+														<span class="price product-price">Rp {{number_format($productListData->newPrice,0,",",".")}}</span>
+														@if($productListData->Discount != null)
+															<span class="old-price product-price">Rp {{number_format($productListData->oldPrice,0,",",".")}}</span>
+														@endif
 													</div>
 												</div>
 											</div>
@@ -151,7 +160,16 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
+		var category = [];
+		$('.categoryCheck').click(function(){
+			if($(this).is(":checked")){
+				category.push($(this).val());
+			} else{
+				category.splice($.inArray($(this).val() ,category),1);
+			}
 
+			console.log(category);
+		});
 	});
 </script>
 

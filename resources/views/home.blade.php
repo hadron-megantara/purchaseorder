@@ -33,7 +33,7 @@
 										<div class="col-md-12">
 											<div class="product-wrapper mb-40  mrg-nn-xs">
 												<div class="product-img">
-													<a href="/products/detail/{{$productData->Id}}"><img src="{{env('API_BASE_URL').'app/images/'.$productData->Photo}}" alt="" style="height:407px" /></a>
+													<a href="/products/detail/{{$productData->Id}}"><img src="{{$productData->Photo}}" alt="" style="height:407px" /></a>
 													<span class="new-label">New</span>
 													<div class="product-action">
 														{{-- <a href="#"><i class="pe-7s-cart"></i></a> --}}
@@ -48,8 +48,10 @@
 													</div>
 													<div class="price-reviews">
 														<div class="price-box">
-															<span class="price product-price">Rp {{number_format($productData->Price,0,",",".")}}</span>
-															{{-- <span class="old-price product-price">$262.00</span> --}}
+															<span class="price product-price">Rp {{number_format($productData->newPrice,0,",",".")}}</span>
+															@if($productData->Discount != null)
+																<span class="old-price product-price">Rp {{number_format($productData->oldPrice,0,",",".")}}</span>
+															@endif
 														</div>
 														{{-- <div class="pro-rating">
 															<a href="#"><i class="fa fa-star-o"></i></a>

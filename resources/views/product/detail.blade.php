@@ -33,8 +33,8 @@
 						@foreach($photo as $photoData)
 						<div class="tab-pane @if($photoData->Selected == 1) active @endif" id="photo-{{$photoData->_Product}}-{{$photoData->_Color}}-{{$photoData->Id}}">
 							<div class="pro-large-img">
-								<img src="{{env('API_BASE_URL').'app/images/'.$photoData->Photo}}" alt="" />
-								<a class="popup-link" href="{{env('API_BASE_URL').'app/images/'.$photoData->Photo}}">View larger <i class="fa fa-search-plus" aria-hidden="true"></i></a>
+								<img src="{{$photoData->Photo}}" alt="" />
+								<a class="popup-link" href="{{$photoData->Photo}}">View larger <i class="fa fa-search-plus" aria-hidden="true"></i></a>
 							</div>
 						</div>
 						@endforeach
@@ -47,7 +47,7 @@
 									$selectPhotoByColor[$photoData2->_Color] = "subPhoto-".$photoData2->_Product."-".$photoData2->_Color."-".$photoData2->Id;
 								}
 							?>
-							<div @if($photoData2->Selected == 1) class="active" @endif style="max-height:150px"><a href="#photo-{{$photoData2->_Product}}-{{$photoData2->_Color}}-{{$photoData2->Id}}" id="subPhoto-{{$photoData2->_Product}}-{{$photoData2->_Color}}-{{$photoData2->Id}}" data-toggle="tab"><img src="{{env('API_BASE_URL').'app/images/'.$photoData2->Photo}}" alt="" /></a></div>
+							<div @if($photoData2->Selected == 1) class="active" @endif style="max-height:150px"><a href="#photo-{{$photoData2->_Product}}-{{$photoData2->_Color}}-{{$photoData2->Id}}" id="subPhoto-{{$photoData2->_Product}}-{{$photoData2->_Color}}-{{$photoData2->Id}}" data-toggle="tab"><img src="{{$photoData2->Photo}}" alt="" /></a></div>
 						@endforeach
 					</div>
 				</div>
@@ -61,7 +61,10 @@
 				<div class="product-details">
 					<h2 class="pro-d-title">{{$detail->Name}}</h2>
 					<div class="price-box">
-						<span class="price product-price">Rp {{number_format($detail->Price,0,",",".")}}</span>
+						<span class="price product-price">Rp {{number_format($detail->newPrice,0,",",".")}}</span>
+						@if($detail->Discount != null)
+							<span class="old-price product-price">Rp {{number_format($detail->oldPrice,0,",",".")}}</span>
+						@endif
 						<span class="pull-right"><span class="fa fa-eye"></span> Telah dilihat 10 orang</span>
 					</div>
 					<div class="short-desc">
