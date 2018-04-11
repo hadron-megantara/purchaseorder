@@ -28,6 +28,7 @@ Route::post('/register', 'Auth\RegisterController@create');
 
 Route::get('/password/reset', 'Auth\ForgotPasswordController@forgot');
 
+Route::get('/products', 'ProductController@productList');
 Route::get('/products/{name}', 'ProductController@product');
 Route::get('/products/detail/{id}', 'ProductController@detail');
 
