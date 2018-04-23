@@ -49,8 +49,9 @@ class LoginController extends Controller
     public function signout(Request $request){
         Session::forget('user');
 
-        if(Session::)
-        Session::forget('cart');
+        if(Session::has('cart')){
+            Session::forget('cart');
+        }
 
 
         return redirect('/');

@@ -43,6 +43,8 @@ Route::get('/cart/get-photo', 'CartController@getPhoto');
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/checkout', 'CheckoutController@index');
     Route::post('/checkout', 'CheckoutController@checkout');
+
+    Route::get('/payment-method/{id}', 'CheckoutController@paymentMethod');
 });
 
 Route::get('/wishlist', 'WishlistController@index');

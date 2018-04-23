@@ -221,9 +221,7 @@
                     'address': address,
 				},
 				success: function(data) {
-					console.log(data);
-					spinner.stop();
-					$("#cover").fadeOut(100);
+                    
 				}
 			});
 		});

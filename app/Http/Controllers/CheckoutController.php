@@ -101,6 +101,8 @@ class CheckoutController extends Controller
                     'city' => $request->city, 'district' => $request->district, 'address' => $request->address, 'postCode' => $postCode]
         ]);
 
+        Session::forget('cart');
+
         $responseData = json_decode($response->getBody()->getContents());
         $checkoutData = $responseData->isResponse->data;
     }
