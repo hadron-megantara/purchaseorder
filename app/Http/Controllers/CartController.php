@@ -52,7 +52,8 @@ class CartController extends Controller
                                                         'discount' => $productList->Discount,
                                                         'total' => $cartSessionVal3,
                                                         'totalAvailable' => $productList->Total,
-                                                        'price' => $productList->Price,
+                                                        'oldPrice' => $productList->oldPrice,
+                                                        'price' => $productList->newPrice,
                                                     );
                                                     $break = true;
                                                     break;

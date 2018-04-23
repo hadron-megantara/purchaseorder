@@ -40,8 +40,10 @@ Route::get('/cart/update', 'CartController@updateCart');
 Route::get('/cart/delete', 'CartController@deleteCart');
 Route::get('/cart/get-photo', 'CartController@getPhoto');
 
-Route::get('/checkout', 'CheckoutController@index');
-Route::post('/checkout/add', 'CheckoutController@add');
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/checkout', 'CheckoutController@index');
+    Route::post('/checkout', 'CheckoutController@checkout');
+});
 
 Route::get('/wishlist', 'WishlistController@index');
 

@@ -12,6 +12,12 @@
             <div class="col-md-6 col-sm-6" style="background-color:#ffffff;padding:30px 30px 0 30px;">
 				<h2 style="font-size:16px;margin-bottom:30px"><strong>SIGN IN</strong></h2>
 
+                @if(isset($checkout))
+                    <div class="alert alert-warning text-center">
+                        {{$checkout['message']}}
+                    </div>
+                @endif
+
 				<form action="/login" method="POST">
 					{!! csrf_field() !!}
 

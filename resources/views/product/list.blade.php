@@ -188,7 +188,7 @@
 									@if(count($productList) > 0)
 										<?php
 											$urlParam = '';
-											if($_GET['product_search']){
+											if(isset($_GET['product_search'])){
 												$urlParamSearch = $_GET['product_search'];
 												// dd($urlParamSearch);
 												foreach($urlParamSearch as $urlParamSearchKey => $urlParamSearchVal){
@@ -289,7 +289,7 @@
 							color = '&product_search[color][]='+$(this).val();
 						}
 					} else{
-						gender = gender+'&product_search[color][]='+$(this).val();
+						color = color+'&product_search[color][]='+$(this).val();
 					}
 				}
 			});

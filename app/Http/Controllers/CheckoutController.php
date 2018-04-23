@@ -41,7 +41,7 @@ class CheckoutController extends Controller
                                         $productListTemp[$cartSessionKey][$cartSessionKey2][$cartSessionKey3]['color'] = $productListResponse->ColorName;
                                         $productListTemp[$cartSessionKey][$cartSessionKey2][$cartSessionKey3]['size'] = $productListResponse->SizeName;
                                         $productListTemp[$cartSessionKey][$cartSessionKey2][$cartSessionKey3]['total'] = $cartSessionVal3;
-                                        $productListTemp[$cartSessionKey][$cartSessionKey2][$cartSessionKey3]['price'] = $productListResponse->Price;
+                                        $productListTemp[$cartSessionKey][$cartSessionKey2][$cartSessionKey3]['price'] = $productListResponse->newPrice;
                                     }
                                 }
                             }
@@ -56,22 +56,56 @@ class CheckoutController extends Controller
 
             // $user = session('user');
 
+            $userData = null;
+            if(Session::has('user')){
+                $userData = session('user');
+            }
+
             $data = array(
                 'productDetail' => $productListTemp,
                 'province' => $provinceResponse,
+                'userData' => $userData
             );
 
             return view('checkout', $data);
         }
     }
 
-    public function add(Request $request){
+    public function checkout(Request $request){
+        $cartSession = session('cart');
+        $productList = "";
+
+        foreach($cartSession['data'] as $cartSessionKey => $cartSessionVal){
+            foreach($cartSessionVal as $cartSessionKey2 => $cartSessionVal2){
+                foreach($cartSessionVal2 as $cartSessionKey3 => $cartSessionVal3){
+                    if($productList != ""){
+                        $productList = $productList.',';
+                    }
+
+                    $productList = $productList.$cartSessionKey.'-'.$cartSessionKey2.'-'.$cartSessionKey3.'-'.$cartSessionVal3;
+                }
+            }
+        }
+
+        $userData = session('user');
+
+        $postCode = '';
+        if($request->has('postCode') && $request->postCode != ''){
+            $postCode = $request->postCode;
+        }
+
         $client = new Client;
         $response = $client->request('POST', env('API_URL', 'http://192.168.1.103:212/api/v1/').'order/add', [
-            'query' => ['owner' => env('OWNER_ID', 1), 'productIdList' => $cartProductId]
+            'query' => ['owner' => env('OWNER_ID', 1), 'account' => $userData['id'], 'fullname' => $request->fullname,
+                    'phone' => $request->phone, 'province' => $request->province, 'productList' => $productList,
+                    'city' => $request->city, 'district' => $request->district, 'address' => $request->address, 'postCode' => $postCode]
         ]);
 
         $responseData = json_decode($response->getBody()->getContents());
-        $productList = $responseData->isResponse->data;
+        $checkoutData = $responseData->isResponse->data;
+    }
+
+    public function paymentMethod(Request $request){
+        return view('payment-method');
     }
 }

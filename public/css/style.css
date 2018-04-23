@@ -1303,3 +1303,12 @@ label.inline > a {
     color:    red;
      opacity: 1 !important;
 }
+
+.checkout-form-list{
+    margin-bottom: 15px;
+}
+
+input[type=text]::placeholder, textarea::placeholder, input[type=password]::placeholder{
+    opacity:0.5 !important;
+    color: #000000;
+}
