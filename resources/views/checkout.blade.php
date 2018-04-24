@@ -135,7 +135,7 @@
 </div>
 <!-- checkout-area end -->
 
-<div id="cover"> </div>
+<div id="cover" style="width:100%;height:100%"> </div>
 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -221,7 +221,7 @@
                     'address': address,
 				},
 				success: function(data) {
-                    
+                    window.location.replace("/payment-method/"+data);
 				}
 			});
 		});

@@ -35,8 +35,9 @@
                         <nav>
                             <ul>
                                 <li>
-                                    <a href="/">Home</a>
+                                    <a href="/products">Semua Produk</a>
                                 </li>
+
                                 <li><a href="#">Jilbab</a>
                                     <ul class="submenu" style="margin-top:-20px">
                                         <li><a href="/categories/jilbab" style="border-bottom: 1px solid #ebebeb;">Semua Jilbab</a></li>

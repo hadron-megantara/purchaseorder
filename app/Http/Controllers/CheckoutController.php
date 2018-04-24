@@ -101,13 +101,45 @@ class CheckoutController extends Controller
                     'city' => $request->city, 'district' => $request->district, 'address' => $request->address, 'postCode' => $postCode]
         ]);
 
-        Session::forget('cart');
-
         $responseData = json_decode($response->getBody()->getContents());
-        $checkoutData = $responseData->isResponse->data;
+
+        if($responseData->isError == false){
+            $checkoutData = $responseData->isResponse->data;
+            Session::forget('cart');
+
+            return $checkoutData->orderCode;
+        }
     }
 
-    public function paymentMethod(Request $request){
-        return view('payment-method');
+    public function paymentMethod($id, Request $request){
+        $client = new Client;
+        $response = $client->request('GET', env('API_URL', 'http://192.168.1.103:212/api/v1/').'order/get', [
+            'query' => ['orderCode' => $id]
+        ]);
+        $responseData = json_decode($response->getBody()->getContents());
+
+        if($responseData->isError == false){
+            $orderData = $responseData->isResponse->data;
+
+            $client = new Client;
+            $response = $client->request('GET', env('API_URL', 'http://192.168.1.103:212/api/v1/').'config/bank-account/get', [
+                'query' => ['owner' => env('OWNER_ID', 1)]
+            ]);
+            $responseData = json_decode($response->getBody()->getContents());
+
+            $bankAccount = null;
+            if($responseData->isError == false){
+                $bankAccount = $responseData->isResponse->data;
+            }
+
+            $data = array(
+                'orderData' => $orderData,
+                'bankAccount' => $bankAccount
+            );
+
+            return view('payment-method', $data);
+        } else{
+
+        }
     }
 }
