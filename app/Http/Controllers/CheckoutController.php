@@ -111,7 +111,7 @@ class CheckoutController extends Controller
         }
     }
 
-    public function paymentMethod($id, Request $request){
+    public function orderFinish($id, Request $request){
         $client = new Client;
         $response = $client->request('GET', env('API_URL', 'http://192.168.1.103:212/api/v1/').'order/get', [
             'query' => ['orderCode' => $id]
@@ -137,7 +137,7 @@ class CheckoutController extends Controller
                 'bankAccount' => $bankAccount
             );
 
-            return view('payment-method', $data);
+            return view('order-finish', $data);
         } else{
 
         }

@@ -221,7 +221,7 @@
                     'address': address,
 				},
 				success: function(data) {
-                    window.location.replace("/payment-method/"+data);
+                    window.location.replace("/order/"+data);
 				}
 			});
 		});

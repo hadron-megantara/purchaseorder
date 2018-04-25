@@ -48,6 +48,7 @@
     <script src="/js/app.js"></script>
     <script src="/js/jquery-ui.min.js"></script>
     <script src="/js/jquery.priceformat.min.js"></script>
+    <script src="/js/jquery.countdown.min.js"></script>
     <script src="/js/spin.min.js"></script>
 
     <!-- Scripts -->
