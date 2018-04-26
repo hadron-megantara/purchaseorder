@@ -49,10 +49,13 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::get('/wishlist', 'WishlistController@index');
 
+Route::get('/config/province/get', 'ConfigController@getProvince');
+Route::get('/config/city/get', 'ConfigController@getCity');
+Route::get('/config/district/get', 'ConfigController@getDistrict');
+
+Route::get('/profile', 'ProfileController@index');
 Route::get('/profile/edit', 'ProfileController@edit');
 Route::get('/profile/address', 'ProfileController@address');
 Route::get('/profile/bank', 'ProfileController@bank');
 
-Route::get('/config/province/get', 'ConfigController@getProvince');
-Route::get('/config/city/get', 'ConfigController@getCity');
-Route::get('/config/district/get', 'ConfigController@getDistrict');
+Route::post('/profile/address/add', 'ProfileController@addAddress');

@@ -45,6 +45,10 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             'bindings',
         ],
+
+        'checktoken' => [
+            \App\Http\Middleware\CheckToken::class
+        ],
     ];
 
     /**

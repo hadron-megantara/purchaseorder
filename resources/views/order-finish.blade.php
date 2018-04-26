@@ -194,7 +194,6 @@
 <script type="text/javascript">
 	$(document).ready(function(){
         var finalDate = '{{$orderData->expiredDt}}';
-        console.log('2018/04/26 18:00:00');
 
         $('#clock').countdown(finalDate).on('update.countdown', function(event) {
           var $this = $(this).html(event.strftime(''

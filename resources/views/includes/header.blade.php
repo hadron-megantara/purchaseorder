@@ -25,12 +25,12 @@
     <div class="header-area header-middle">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-2 col-sm-3 col-xs-12">
+                <div class="col-md-1 col-sm-1 col-xs-12">
                     <div class="logo">
-                        <a href="/"><img src="/img/logo/logo-word-black.png" alt="" / style="width:200px;"></a>
+                        <a href="/"><img src="/img/logo/logo-word-black.png" alt="" / style="width:150px;"></a>
                     </div>
                 </div>
-                <div class="col-md-10 col-sm-9 col-xs-12 text-right xs-center">
+                <div class="col-md-11 col-sm-11 col-xs-12 text-right xs-center">
                     <div class="main-menu display-inline hidden-sm hidden-xs">
                         <nav>
                             <ul>
