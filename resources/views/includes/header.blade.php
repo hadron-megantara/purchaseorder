@@ -96,7 +96,7 @@
                                     <div class="current" style="cursor:auto"><b>Akun Saya</b></div>
                                     <ul>
                                         <li><a href="/profile"><span class="fa fa-user"></span> Profil</a></li>
-                                        <li><a href="/booking-history"><span class="fa fa-th-list"></span> Riwayat Pemesanan</a></li>
+                                        <li><a href="/booking-history"><span class="fa fa-list-alt"></span> Riwayat Pemesanan</a></li>
                                         <li><a href="/signout"><span class="fa fa-sign-out"></span> Sign Out</a></li>
                                     </ul>
                                 </li>

@@ -1331,3 +1331,8 @@ input[type=text]::placeholder, textarea::placeholder, input[type=password]::plac
 .modal .modal-body .modal-input-text{
     font-size: 14px;
 }
+
+.btn-sm.btn-black{
+    background-color: #000000;
+    color: #ffffff;
+}
