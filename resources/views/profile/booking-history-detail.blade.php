@@ -103,6 +103,15 @@
                         </div>
 
                         <div class="col-md-1">&nbsp;</div>
+
+                        <div class="row clear"></div>
+
+                        <div style="margin-top:50px"></div>
+
+                        <div class="col-md-12 row" style="padding-right:30px">
+                            <a href="/products" class="btn btn-primary form-control"><span class="fa fa-shopping-cart"></span> KEMBALI BERBELANJA</a>
+                        </div>
+
                     </div>
 
                     <div class="col-md-6 row-eq-height" style="margin-bottom:20px">
