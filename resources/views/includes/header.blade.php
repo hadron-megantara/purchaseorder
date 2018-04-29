@@ -89,13 +89,14 @@
                         @if($user == null)
                             <span class="fa fa-user"></span> <a href="/login">Sign In</a> | <a href="/register">Register</a>
                         @else
-                            <span class="userMenu" style="color:#007bff;"><span class="fa fa-user"> Hi, <span style="font-weight:bold">{{$firstname}}</span></span></span>
+                            <span class="userMenu" style="color:#4FC1F0;"><span class="fa fa-user"> Hi, <span style="font-weight:bold">{{$firstname}}</span></span></span>
                             <ul class="content-nav toogle-content userMenu userMenuDropDown" style="margin-top:-30px;padding:0px">
                                 <li class="currencies-block-top" style="padding-top:0px;margin-top:-20px">
                                     <div class="current" style="height:30px;background:none;background-color:none"></div>
                                     <div class="current" style="cursor:auto"><b>Akun Saya</b></div>
                                     <ul>
                                         <li><a href="/profile"><span class="fa fa-user"></span> Profil</a></li>
+                                        <li><a href="/booking-history"><span class="fa fa-th-list"></span> Riwayat Pemesanan</a></li>
                                         <li><a href="/signout"><span class="fa fa-sign-out"></span> Sign Out</a></li>
                                     </ul>
                                 </li>

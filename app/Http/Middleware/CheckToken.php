@@ -18,13 +18,7 @@ class CheckToken
         if (isset($_COOKIE[env('LOGIN_COOKIE', 'phpsess')])) {
             $token = $_COOKIE[env('LOGIN_COOKIE', 'phpsess')];
 
-            $client = new Client;
-            $response = $client->request('GET', env('API_URL', 'http://192.168.1.103:212/api/v1/').'order/get', [
-                'query' => ['orderCode' => $id]
-            ]);
-            $responseData = json_decode($response->getBody()->getContents());
-
-            $request->attributes->add(['user' => $user]);
+            $request->attributes->add(['token' => $token]);
         } else{
             return redirect('/');
         }
