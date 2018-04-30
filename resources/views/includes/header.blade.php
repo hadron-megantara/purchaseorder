@@ -18,10 +18,14 @@
     .userMenu li a:hover{
         background-color: #ebebeb;
     }
+
+    .logo:hover{
+        cursor: pointer;
+    }
 </style>
 
 <!-- header start -->
-<header class="header-pos elements1" style="border-bottom: 1px solid #ebebeb;">
+<header class="header-pos elements1" style="border-bottom: 1px solid #ffff;background-color:#ffffff">
     <div class="header-area header-middle">
         <div class="container-fluid">
             <div class="row">
@@ -220,6 +224,10 @@
 
         $('.userMenu').mouseleave(function(){
             $('.userMenuDropDown').hide();
+        });
+
+        $('.logo').click(function(){
+            window.location.replace = '/';
         });
     });
 </script>

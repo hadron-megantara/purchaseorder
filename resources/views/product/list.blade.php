@@ -30,7 +30,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-3 col-sm-4">
-				<div class="column">
+				<div class="column" style="background-color:#ffffff">
 					<div class="row" style="margin-bottom:20px"></div>
 					<span class="pull-left" style="font-size:18px;font-weight:bold">Filter</span>
 					<span class="pull-right"><a href="/products" style="color:#000000"><span class="fa fa-close"></span>Hapus Semua Filter</a></span>
