@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Session;
+use DataTables;
 use GuzzleHttp\Client;
 
 class ProfileController extends Controller

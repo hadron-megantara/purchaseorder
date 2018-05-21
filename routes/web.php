@@ -53,14 +53,15 @@ Route::group(['middleware' => ['checktoken']], function () {
     Route::get('/profile/bank', 'ProfileController@bank');
 
     Route::get('/profile/address', 'ProfileController@address');
-    Route::post('/profile/address/add', 'ProfileController@addAddress');
+    Route::post('/profile/address/Sadd', 'ProfileController@addAddress');
     Route::post('/profile/address/edit', 'ProfileController@editAddress');
 
     Route::get('/booking-history', 'ProfileController@bookingHistory');
     Route::get('/booking-history/{id}', 'ProfileController@bookingHistoryDetail');
-});
 
-Route::get('/wishlist', 'WishlistController@index');
+    Route::get('/booking-history/{id}', 'ProfileController@bookingHistoryDetail');
+    Route::get('/wishlist', 'WishlistController@index');
+});
 
 Route::get('/config/province/get', 'ConfigController@getProvince');
 Route::get('/config/city/get', 'ConfigController@getCity');
